@@ -1,6 +1,4 @@
-import java.sql.SQLOutput;
-
-public class X002_Primitives {
+public class X002_IntPrimitives {
     public static void main(String[] args) {
 
         byte byteNumber = 7; // max value: -127 y 127
