@@ -1,4 +1,4 @@
-public class X009_StringExampleInmutability {
+public class X010_StringExampleInmutability {
     public static void main(String[] args) {
         String course = "Java programming"; // String is a special type: its an object but we can write directly
         String professor = "Andrés Guzman";
