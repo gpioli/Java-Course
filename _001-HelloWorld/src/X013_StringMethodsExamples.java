@@ -17,6 +17,21 @@ public class X013_StringMethodsExamples {
         System.out.println("name.substring(1) = " + name.substring(1));
         System.out.println("name.substring(1,4) = " + name.substring(1,4));
         System.out.println("name.substring(name.length()-3,name.length()) = " + name.substring(name.length()-3,name.length()));
+        
+        String str = "trabalenguas";
+        System.out.println("str.replace(\"a\", \".\") = " + str.replace("a", ".")); // remember Strings are inmutable
+        System.out.println("str = " + str);
+        System.out.println("str.indexOf(\"a\") = " + str.indexOf("a"));
+        System.out.println("str.lastIndexOf(\"a\") = " + str.lastIndexOf("a"));
+        System.out.println("str.indexOf(\"z\") = " + str.indexOf("z"));
+        System.out.println("str.contains(\"lenguas\") = " + str.contains("lenguas"));
+        System.out.println("str.startsWith(\"lenguas\") = " + str.startsWith("lenguas"));
+        System.out.println("str.startsWith(\"lenguas\") = " + str.startsWith("tra"));
+        System.out.println("str.endsWith(\"lenguas\") = " + str.endsWith("lenguas"));
+        System.out.println("str.endsWith(\"lenguas\") = " + str.endsWith("lenguas"));
+
+        System.out.println("  trabalenguas  ");
+        System.out.println("  trabalenguas  ".trim());
 
     }
 }
