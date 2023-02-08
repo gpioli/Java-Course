@@ -1,4 +1,4 @@
-public class X014_StringExampleFileExtension {
+public class X015_StringExampleFileExtension {
     public static void main(String[] args) {
 
         // function for obtaining file extension:

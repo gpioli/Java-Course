@@ -1,4 +1,4 @@
-public class X013_StringMethodsExamples {
+public class X014_StringMethodsExamples {
     public static void main(String[] args) {
         
         String name = "Gaston";
