@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class S4_ArithmeticOperators {
+public class S4_001_ArithmeticOperators {
     public static void main(String[] args) {
 
         // Asignation in the same line:
