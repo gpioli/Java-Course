@@ -29,19 +29,28 @@ public class S4_007_LogicalOperatorsLogin {
 
         boolean isAuthenticated = false;
 
+        // if the list or array is big, it would be a better implementation using if instead of the ternary operator
+        // because we cant use break in the ternary
         for(int i = 0; i< usernames.length; i++){
-            if(usernames[i].equals(u) && passwords[i].equals(p)){
+            isAuthenticated = usernames[i].equals(u) && passwords[i].equals(p) ? true : isAuthenticated;
+        }
+/*            if(usernames[i].equals(u) && passwords[i].equals(p)){
                 isAuthenticated = true;
                 break;
             }
-        }
+        }*/
 
 
-        if(isAuthenticated){
+        String message = isAuthenticated ? "Welcome user ".concat(u).concat("!") :
+                "Wrong user or password.\nSorry, authentication required. ";
+
+        System.out.println(message);
+
+/*        if(isAuthenticated){
             System.out.println("Welcome user ".concat(u).concat("!"));
         } else {
             System.out.println("Wrong user or password.");
             System.out.println("Sorry, authentication required. ");
-        }
+        }*/
     }
 }
