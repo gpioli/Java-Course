@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class S004_008_TernaryOperator {
+public class S4_008_TernaryOperator {
     public static void main(String[] args) {
         
         String variable = 7 == 7 ? "this will print if the confition is true" : "this will print if the condition is false";
