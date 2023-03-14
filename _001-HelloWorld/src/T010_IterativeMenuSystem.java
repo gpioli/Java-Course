@@ -47,9 +47,9 @@ Para eliminar el mensaje "Usuario eliminado correctamente" y así sucesivamente 
 
 Usar un do while para iterar hasta que la opción sea salir, cada vez que se selecciona una operación distinta a salir, al finalizar con dicha operación debe volver al menú para continuar con otra, al finalizar con la opción salir (5) se debe mostrar el mensaje "Haz salido con exito!" y finalizar el programa. */
 
-import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.*;
 
 public class T010_IterativeMenuSystem {
     public static void main(String[] args) {
