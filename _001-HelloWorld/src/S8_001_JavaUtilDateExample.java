@@ -1,7 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class S8_JavaUtilDateExample {
+public class S8_001_JavaUtilDateExample {
     public static void main(String[] args) {
         
         Date date = new Date();
