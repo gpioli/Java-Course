@@ -5,6 +5,7 @@ import java.util.Date;
 public class S8_002_JavaUtilCalendar {
     public static void main(String[] args) {
 
+        // Calendar is an abstract class, so this is the way "to call a new object"
     Calendar calendar = Calendar.getInstance();
 
     calendar.set(2020, Calendar.SEPTEMBER, 25, 19, 20, 10);
@@ -21,13 +22,13 @@ public class S8_002_JavaUtilCalendar {
         calendar.set(Calendar.SECOND, 10);
         calendar.set(Calendar.MILLISECOND, 125);
 
-        Date date1 = calendar.getTime();
-        System.out.println("date1 without format = " + date1);
+        Date date2 = calendar.getTime();
+        System.out.println("date2 without format = " + date2);
 
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
-        String dateWithFormat = format.format(date1);
-        System.out.println("date1 with format = " + dateWithFormat);
+        String dateWithFormat = format.format(date2);
+        System.out.println("date2 with format = " + dateWithFormat);
 
         // What if we want to work with AM / PM time (12 hours)
          format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS a");
@@ -36,7 +37,7 @@ public class S8_002_JavaUtilCalendar {
 
         dateWithFormat = format.format(date);
         System.out.println("dateWithFormat = " + dateWithFormat);
-        dateWithFormat = format.format(date1);
+        dateWithFormat = format.format(date2);
         System.out.println("date1WithFormat = " + dateWithFormat);
 
     }
