@@ -26,6 +26,27 @@ public class S8_001_JavaUtilDateExample {
 
         // more info about formatting for SimpleDateFormat:
         // https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
+
+
+
+        // How much time does it take to do the operation?
+
+        // time before the 'for'
+        date = new Date();
+
+        long j = 0;
+        for(int i = 0; i < 10000000; i++){
+            j += i;
+        }
+        System.out.println("j = " + j);
+
+        // time after the 'for' iteration
+        Date date2 = new Date();
+
+        // lets check the time taken:
+        long finalTime = date2.getTime() - date.getTime();
+        System.out.println("finalTime = " + finalTime); // ~ 16 miliseconds
+
     }
     
 }
