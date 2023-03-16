@@ -1,6 +1,6 @@
 import java.util.Properties;
 
-public class S9_SystemProperties {
+public class S9_001_SystemProperties {
     public static void main(String[] args) {
 
         // More info here: https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html
