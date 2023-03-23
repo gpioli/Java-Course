@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class S11_002_MathClassII {
+public class S10_002_MathClassII {
     public static void main(String[] args) {
 
         double random = Math.random(); // gives us random values between 0-1
