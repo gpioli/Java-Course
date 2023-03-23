@@ -1,20 +1,24 @@
 import java.util.Arrays;
+import java.util.Collections;
 
 public class S12_004_ArraysInverseIterationMuting {
+
+    public static void inverseArray(String[] arr) {
+
+        int total2 = arr.length;
+        int total = arr.length;
+        for (int i = 0; i < total2; i++) {
+            String actual = arr[i];
+            String inverse = arr[total-1-i];
+            arr[i] = inverse;
+            arr[total-1-i] = actual;
+            total2--;
+        }
+    }
+
     public static void main(String[] args) {
 
-        // declaration and instantiation
 
-/*        String[] products = new String[7];
-        int total = products.length;*/
-
-/*        products[0] = "Kingston Pendrive 64GB";
-        products[1] = "Samsung Galaxy";
-        products[2] = "Samsung External Hard Drive";
-        products[3] = "Notebook Asus";
-        products[4] = "Macbook Air";
-        products[5] = "Chromecast 4th generation";
-        products[6] = "Oxford bicycle";*/
 
 
         String[] products = {"Kingston Pendrive 64GB", "Samsung Galaxy", "Samsung External Hard Drive", "Notebook Asus",
@@ -27,14 +31,21 @@ public class S12_004_ArraysInverseIterationMuting {
             System.out.println("Index " + i + " : " + products[i]);
         }
 
-        System.out.println("\n=== Using inverse for ===");
+
+        inverseArray(products);
+        System.out.println("\n=== Inverse array ===");
         for (int i = 0; i < total; i++) {
-            System.out.println("Index = " + (total-1-i) + ": " + products[total-1-i]);
+            System.out.println("Index " + i + " : " + products[i]);
         }
 
-        System.out.println("\n=== Using inverse for 2===");
-        for (int i = total - 1; i >= 0; i--) {
-            System.out.println("Index = " + (i) + ": " + products[i]);
+
+        // Another way: Api Collections:
+        System.out.println("\n=== Collections API - lets invert it again: ===");
+        Collections.reverse(Arrays.asList(products));
+        System.out.println("\n=== Inverse array ===");
+        for (int i = 0; i < total; i++) {
+            System.out.println("Index " + i + " : " + products[i]);
         }
+
     }
 }
