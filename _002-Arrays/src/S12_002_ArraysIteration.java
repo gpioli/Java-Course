@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class S12_001_ArraysIteration {
+public class S12_002_ArraysIteration {
     public static void main(String[] args) {
 
         // declaration and instantiation

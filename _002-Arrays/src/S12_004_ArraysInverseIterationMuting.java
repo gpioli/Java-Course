@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class S12_001_ArraysInverseIteration {
+public class S12_004_ArraysInverseIterationMuting {
     public static void main(String[] args) {
 
         // declaration and instantiation
