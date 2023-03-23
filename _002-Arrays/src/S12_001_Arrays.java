@@ -75,10 +75,10 @@ public class S12_001_Arrays {
 
 
         Integer[] arr = {0, 8, -10, 45, 100, -50};
-        System.out.println("\nUnordered number array elements: ");
+        System.out.println("\nUnordered array elements: ");
         Arrays.stream(arr).forEach(c -> System.out.println(c));
         Arrays.sort(arr);
-        System.out.println("\nOrdered number array elements: ");
+        System.out.println("\nOrdered array elements: ");
         Arrays.stream(arr).forEach(System.out::println); // this does the same as the previous stream
 
     }
