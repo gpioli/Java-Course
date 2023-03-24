@@ -19,9 +19,7 @@ public class S12_005_BubbleOrdering {
     public static void main(String[] args) {
 
 
-
-        String[] products = {"Kingston Pendrive 64GB", "Samsung Galaxy", "Samsung External Hard Drive", "Notebook Asus",
-                "Macbook Air", "Chromecast 4th generation", "Oxford bicycle"};
+        String[] products = {"Kingston Pendrive 64GB", "Samsung Galaxy", "Samsung External Hard Drive", "Notebook Asus", "Macbook Air", "Chromecast 4th generation", "Oxford bicycle"};
         int total = products.length;
 
         // Here we use the bubble algorithm. It's not very efficient but it works
@@ -35,10 +33,13 @@ public class S12_005_BubbleOrdering {
                     String aux = products[i];
                     products[i] = products[j];
                     products[j] = aux;
-                    counter++;
                 }
+                counter++; //49
             }
         }
+
+        System.out.println("counter = " + counter);
+
 
         System.out.println("\n=== Ordered array ===");
         for (int i = 0; i < total; i++) {
