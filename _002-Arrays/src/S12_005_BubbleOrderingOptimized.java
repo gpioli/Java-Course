@@ -16,9 +16,9 @@ public class S12_005_BubbleOrderingOptimized {
         for (int i = 0; i < total; i++) {
             for (int j = 0; j < total - 1 - i; j++) {
                 if (products[j + 1].compareTo(products[j]) < 0) { // if i is in a lower value in the unicode table, we exchange the products.
-                    String aux = products[i];
-                    products[i] = products[j];
-                    products[j] = aux;
+                    String aux = products[j];
+                    products[j] = products[j+1];
+                    products[j+1] = aux;
                 }
                 counter++;
             }
