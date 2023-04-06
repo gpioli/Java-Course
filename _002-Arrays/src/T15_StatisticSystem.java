@@ -40,16 +40,16 @@ public class T15_StatisticSystem {
             }
         }
 
-        try {
-            positivesMean = ( Double.valueOf(positivesRunningTotal) / Double.valueOf(totalPositives));
-        } catch (ArithmeticException e) {
+        if (totalPositives == 0) {
             positivesMean = 0d;
+        } else {
+            positivesMean = ( Double.valueOf(positivesRunningTotal) / Double.valueOf(totalPositives));
         }
 
-        try {
-            negativesMean = ( Double.valueOf(positivesRunningTotal) / Double.valueOf(totalNegatives));
-        } catch (ArithmeticException e) {
+        if (totalNegatives == 0) {
             negativesMean = 0d;
+        } else {
+            negativesMean = ( Double.valueOf(positivesRunningTotal) / Double.valueOf(totalNegatives));
         }
 
 
