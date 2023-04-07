@@ -49,7 +49,7 @@ public class T15_StatisticSystem {
         if (totalNegatives == 0) {
             negativesMean = 0d;
         } else {
-            negativesMean = ( Double.valueOf(positivesRunningTotal) / Double.valueOf(totalNegatives));
+            negativesMean = ( Double.valueOf(negativesRunningTotal) / Double.valueOf(totalNegatives));
         }
 
 
