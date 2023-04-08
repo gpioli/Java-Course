@@ -17,7 +17,7 @@ public class S14_001_Car {
         subaru.color = "White";
 
         System.out.println();
-        subaru.detail();
+        subaru.viewDetail();
 
 
         Car mazda = new Car();
@@ -27,9 +27,12 @@ public class S14_001_Car {
         mazda.color = "Red";
 
         System.out.println();
-        System.out.println(mazda.detail());
-        System.out.println(subaru.detail());
+        System.out.println(mazda.viewDetail());
+        System.out.println(subaru.viewDetail());
+        System.out.println(subaru.accelerate(3000));
+        System.out.println(subaru.stop());
 
+        System.out.println(mazda.accelerateBreak(4000));
     }
 
 }

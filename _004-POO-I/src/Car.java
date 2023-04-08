@@ -5,13 +5,30 @@ public class Car {
     double cc;
 
     // creating our first method:
-    public String detail(){
+    public String viewDetail() {
         StringBuilder sb = new StringBuilder();
         sb.append("\ncar.manufacturer = " + this.manufacturer);
         sb.append("\ncar.model = " + this.model);
         sb.append("\ncar.color = " + this.color);
         sb.append("\ncar.cc = " + this.cc);
         return sb.toString();
-    };
+    }
+
+    ;
+
+    public String accelerate(int rpm) {
+        return "car " + manufacturer + " accelerating to " + rpm + " rpm.";
+    }
+
+    public String stop(){ // break is a reserved work
+        return this.manufacturer + " " + this.model + " breaking";
+    }
+
+    // combining both methods in one
+    public String accelerateBreak(int rpm){
+        String accelerate = this.accelerate(rpm);
+        String stop = this.stop();
+        return accelerate + "\n" + stop();
+    }
 
 }
