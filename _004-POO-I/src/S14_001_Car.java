@@ -33,6 +33,9 @@ public class S14_001_Car {
         System.out.println(subaru.stop());
 
         System.out.println(mazda.accelerateBreak(4000));
+
+        System.out.println("Km per litre " + subaru.calculateConsumption(300, 0.6f));
+        System.out.println("Km per litre " + subaru.calculateConsumption(300, 60));
     }
 
 }

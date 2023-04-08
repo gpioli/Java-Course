@@ -3,6 +3,7 @@ public class Car {
     String model;
     String color = "grey"; // default value
     double cc;
+    int tankCapacity = 40;
 
     // creating our first method:
     public String viewDetail() {
@@ -29,6 +30,14 @@ public class Car {
         String accelerate = this.accelerate(rpm);
         String stop = this.stop();
         return accelerate + "\n" + stop();
+    }
+
+    public float calculateConsumption(int km, float fuelPercentage){
+        return km/(tankCapacity*fuelPercentage);
+    }
+
+    public float calculateConsumption(int km, int fuelPercentage){
+        return km/((tankCapacity*fuelPercentage)/100f);
     }
 
 }
