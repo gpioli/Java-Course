@@ -1,9 +1,49 @@
 public class Car {
-    String manufacturer;
-    String model;
-    String color = "grey"; // default value
-    double cc;
-    int tankCapacity = 40;
+    private String manufacturer;
+    private String model;
+    private String color = "grey"; // default value
+    private double cc;
+    private int tankCapacity = 40;
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getModel(){
+        return this.model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public double getCc() {
+        return cc;
+    }
+
+    public void setCc(double cc) {
+        this.cc = cc;
+    }
+
+    public int getTankCapacity() {
+        return tankCapacity;
+    }
+
+    public void setTankCapacity(int tankCapacity) {
+        this.tankCapacity = tankCapacity;
+    }
 
     // creating our first method:
     public String viewDetail() {
