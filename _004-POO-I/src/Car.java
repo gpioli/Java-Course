@@ -9,6 +9,34 @@ public class Car {
         return manufacturer;
     }
 
+    // creating the constructor
+
+    public Car(String manufacturer, String model){
+        this.manufacturer = manufacturer;
+        this.model = model;
+    }
+
+    // It is possible to have multiple constructors (constructor overload)
+
+
+    public Car() {
+    }
+
+    public Car (String manufacturer, String model, String color) {
+        this(manufacturer, model); // re-using the previous constructor
+        this.color = color;
+    }
+
+    public Car(String manufacturer, String model, String color, double cc) {
+        this(manufacturer, model, color);
+        this.cc = cc;
+    }
+
+    public Car(String manufacturer, String model, String color, double cc, int tankCapacity) {
+        this(manufacturer, model, color, cc);
+        this.tankCapacity = tankCapacity;
+    }
+
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
@@ -48,8 +76,8 @@ public class Car {
     // creating our first method:
     public String viewDetail() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\ncar.manufacturer = " + this.manufacturer);
-        sb.append("\ncar.model = " + this.model);
+        sb.append("\ncar.manufacturer = " + this.manufacturer); // we could also use this.getManufacturer
+        sb.append("\ncar.model = " + this.model); // its the same
         sb.append("\ncar.color = " + this.color);
         sb.append("\ncar.cc = " + this.cc);
         return sb.toString();

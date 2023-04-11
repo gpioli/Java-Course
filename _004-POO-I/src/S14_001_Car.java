@@ -3,7 +3,7 @@ public class S14_001_Car {
     public static void main(String[] args) {
 
         // Instantiating the object
-        Car subaru = new Car();
+        Car subaru = new Car("Subaru", "Impreza");
 
         // this will print default values
         System.out.println("car.manufacturer = " + subaru.getManufacturer());
@@ -11,8 +11,6 @@ public class S14_001_Car {
         System.out.println("car.color = " + subaru.getColor());
         System.out.println("car.cc = " + subaru.getCc());
 
-        subaru.setManufacturer("Subaru");
-        subaru.setModel("Impreza");
         subaru.setCc(2.0);
         subaru.setColor("White");
 
@@ -25,6 +23,8 @@ public class S14_001_Car {
         mazda.setModel("BT-50");
         mazda.setCc(3.0);
         mazda.setColor("Red");
+
+        Car nissan = new Car("Nissan", "Navara", "Dark Grey", 3.5, 50);
 
         System.out.println();
         System.out.println(mazda.viewDetail());
