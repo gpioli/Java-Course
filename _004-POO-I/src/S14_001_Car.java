@@ -25,6 +25,10 @@ public class S14_001_Car {
         mazda.setColor("Red");
 
         Car nissan = new Car("Nissan", "Navara", "Dark Grey", 3.5, 50);
+        Car nissan2 = new Car("Nissan", "Navara", "Dark Grey", 3.5, 50);
+
+        System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan == nissan2));
+        System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan.equals(nissan2)));
 
         System.out.println();
         System.out.println(mazda.viewDetail());

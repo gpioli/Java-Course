@@ -108,4 +108,10 @@ public class Car {
         return km/((tankCapacity*fuelPercentage)/100f);
     }
 
+    // We override the equals method
+    @Override
+    public boolean equals(Object obj) {
+        Car a = (Car) obj;
+        return (this.manufacturer.equals(a.getManufacturer()) && this.model.equals(a.getModel()));
+    }
 }
