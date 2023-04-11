@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class S14_001_Car {
 
     public static void main(String[] args) {
@@ -29,6 +31,12 @@ public class S14_001_Car {
 
         System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan == nissan2));
         System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan.equals(nissan2)));
+
+        Car car = new Car();
+        System.out.println(car.equals(nissan));
+
+        Date date = new Date();
+        System.out.println("Comparing different objects. Result: " + car.equals(date));
 
         System.out.println();
         System.out.println(mazda.viewDetail());

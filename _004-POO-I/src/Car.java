@@ -111,7 +111,20 @@ public class Car {
     // We override the equals method
     @Override
     public boolean equals(Object obj) {
+
+        // comparing memory allocation
+        if (this == obj) {
+            return true;
+        }
+
+        // Here we avoid the code from crashing in case we compare different object types
+        if ( !(obj instanceof Car) ) {
+            return false;
+        }
+
         Car a = (Car) obj;
-        return (this.manufacturer.equals(a.getManufacturer()) && this.model.equals(a.getModel()));
+        return (this.manufacturer != null && this.model != null &&
+                this.manufacturer.equals(a.getManufacturer()) &&
+                this.model.equals(a.getModel()));
     }
 }
