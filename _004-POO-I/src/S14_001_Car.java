@@ -32,6 +32,10 @@ public class S14_001_Car {
         System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan == nissan2));
         System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan.equals(nissan2)));
 
+        System.out.println(nissan.viewDetail());
+        Car.plateColor = "green"; // here we are modifying a static variable... this is not recommended
+        // rigth way would be with a setter
+        Car.setPlateColor("blue");
         Car car = new Car();
         System.out.println(car.equals(nissan));
 
@@ -48,6 +52,9 @@ public class S14_001_Car {
 
         System.out.println("Km per litre " + subaru.calculateConsumption(300, 0.6f));
         System.out.println("Km per litre " + subaru.calculateConsumption(300, 60));
+
+        System.out.println(nissan);
+        System.out.println(nissan.toString());
     }
 
 }

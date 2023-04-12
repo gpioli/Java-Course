@@ -5,6 +5,8 @@ public class Car {
     private double cc;
     private int tankCapacity = 40;
 
+    static String plateColor = "grey";
+
     public String getManufacturer() {
         return manufacturer;
     }
@@ -79,11 +81,19 @@ public class Car {
         sb.append("\ncar.manufacturer = " + this.manufacturer); // we could also use this.getManufacturer
         sb.append("\ncar.model = " + this.model); // its the same
         sb.append("\ncar.color = " + this.color);
+        sb.append("\ncar.plateColor = " + plateColor); // notice that as this is a static method, we reference to it
+        // without the "this" keyword
         sb.append("\ncar.cc = " + this.cc);
         return sb.toString();
     }
 
-    ;
+    public static String getPlateColor(){
+        return plateColor;
+    }
+
+    public static void setPlateColor(String color){
+        Car.plateColor = color;
+    }
 
     public String accelerate(int rpm) {
         return "car " + manufacturer + " accelerating to " + rpm + " rpm.";
@@ -108,6 +118,17 @@ public class Car {
         return km/((tankCapacity*fuelPercentage)/100f);
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", cc=" + cc +
+                ", tankCapacity=" + tankCapacity +
+                '}';
+    }
+
     // We override the equals method
     @Override
     public boolean equals(Object obj) {
@@ -126,5 +147,7 @@ public class Car {
         return (this.manufacturer != null && this.model != null &&
                 this.manufacturer.equals(a.getManufacturer()) &&
                 this.model.equals(a.getModel()));
+
+
     }
 }
