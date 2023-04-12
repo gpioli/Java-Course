@@ -1,9 +1,16 @@
 public class Car {
+
+
     private String manufacturer;
     private String model;
     private String color = "grey"; // default value
     private double cc;
     private int tankCapacity = 40;
+
+    private static int staticTankCapacity = 30;
+
+    private int id;
+    private static int lastId;
 
     static String plateColor = "grey";
 
@@ -13,15 +20,30 @@ public class Car {
 
     // creating the constructor
 
+    public Car(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Car(String manufacturer, String model){
+        this();
         this.manufacturer = manufacturer;
         this.model = model;
     }
 
-    // It is possible to have multiple constructors (constructor overload)
+// It is possible to have multiple constructors (constructor overload)
 
 
     public Car() {
+        this.id = ++lastId;
     }
 
     public Car (String manufacturer, String model, String color) {
@@ -75,9 +97,18 @@ public class Car {
         this.tankCapacity = tankCapacity;
     }
 
+    public static int getStaticTankCapacity() {
+        return staticTankCapacity;
+    }
+
+    public static void setStaticTankCapacity(int staticTankCapacity) {
+        Car.staticTankCapacity = staticTankCapacity;
+    }
+
     // creating our first method:
     public String viewDetail() {
         StringBuilder sb = new StringBuilder();
+        sb.append("\ncar.id = " + this.id);
         sb.append("\ncar.manufacturer = " + this.manufacturer); // we could also use this.getManufacturer
         sb.append("\ncar.model = " + this.model); // its the same
         sb.append("\ncar.color = " + this.color);
@@ -118,10 +149,15 @@ public class Car {
         return km/((tankCapacity*fuelPercentage)/100f);
     }
 
+    public static float calculateStaticConsumption(int km, int fuelPercentage){
+        return km/((Car.staticTankCapacity *fuelPercentage)/100f);
+    }
+
     @Override
     public String toString() {
         return "Car{" +
-                "manufacturer='" + manufacturer + '\'' +
+                "id: " + this.id +
+                ", manufacturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
                 ", cc=" + cc +

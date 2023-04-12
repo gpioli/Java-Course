@@ -20,6 +20,7 @@ public class S14_001_Car {
         subaru.viewDetail();
 
 
+
         Car mazda = new Car();
         mazda.setManufacturer("Mazda");
         mazda.setModel("BT-50");
@@ -55,6 +56,19 @@ public class S14_001_Car {
 
         System.out.println(nissan);
         System.out.println(nissan.toString());
+
+
+        // static method and the right way of calling them:
+        System.out.println("Static method: ");
+        System.out.println("Subaru km / L: " + Car.calculateStaticConsumption(300,60));
+        System.out.println("Nissan km / L: " + Car.calculateStaticConsumption(300, 60));
+
+
+        System.out.println("subaru = " + subaru);
+        System.out.println("mazda = " + mazda);
+        System.out.println("nissan = " + nissan);
+        System.out.println("nissan2 = " + nissan2);
+
     }
 
 }
