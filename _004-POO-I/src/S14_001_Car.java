@@ -14,9 +14,10 @@ public class S14_001_Car {
         System.out.println("car.cc = " + subaru.getCc());
 
         subaru.setCc(2.0);
-        subaru.setColor("White");
+        subaru.setColor(Color.WHITE);
         System.out.println("Max speed route: " + Car.MAX_SPEED_ROUTE);
         System.out.println("Max speed city: " + Car.MAX_SPEED_CITY);
+        subaru.setType(CarType.HATCHBACK);
 
         System.out.println();
         subaru.viewDetail();
@@ -26,19 +27,22 @@ public class S14_001_Car {
         Car mazda = new Car();
         mazda.setManufacturer("Mazda");
         mazda.setModel("BT-50");
+        mazda.setType(CarType.PICKUP);
         mazda.setCc(3.0);
-        mazda.setColor("Red");
+        mazda.setColor(Color.RED);
 
-        Car nissan = new Car("Nissan", "Navara", "Dark Grey", 3.5, 50);
-        Car nissan2 = new Car("Nissan", "Navara", "Dark Grey", 3.5, 50);
+        Car nissan = new Car("Nissan", "Navara", Color.GREY, 3.5, 50);
+        nissan.setType(CarType.PICKUP);
+        Car nissan2 = new Car("Nissan", "Navara", Color.GREY, 3.5, 50);
+        nissan2.setType(CarType.PICKUP);
 
         System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan == nissan2));
         System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan.equals(nissan2)));
 
         System.out.println(nissan.viewDetail());
-        Car.plateColor = "green"; // here we are modifying a static variable... this is not recommended
+        Car.plateColor = Color.GREEN; // here we are modifying a static variable... this is not recommended
         // rigth way would be with a setter
-        Car.setPlateColor("blue");
+        Car.setPlateColor(Color.BLUE);
         Car car = new Car();
         System.out.println(car.equals(nissan));
 
@@ -70,6 +74,10 @@ public class S14_001_Car {
         System.out.println("mazda = " + mazda);
         System.out.println("nissan = " + nissan);
         System.out.println("nissan2 = " + nissan2);
+
+        CarType subaruType = subaru.getType();
+        System.out.println("subaru type = " + subaruType.getName());
+        System.out.println("subaru description = " + subaruType.getDescription());
 
     }
 

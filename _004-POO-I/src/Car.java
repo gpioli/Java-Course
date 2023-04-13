@@ -3,19 +3,27 @@ public class Car {
 
     private String manufacturer;
     private String model;
-    private String color = "grey"; // default value
+    private Color color = Color.GREY; // default value
     private double cc;
     private int tankCapacity = 40;
+
+    private CarType type;
 
     private static int staticTankCapacity = 30;
 
     private int id;
     private static int lastId;
 
-    static String plateColor = "grey";
+    static Color plateColor = Color.GREY;
 
     public static final Integer MAX_SPEED_ROUTE = 120; // Here we are declaring a constant
     public static final Integer MAX_SPEED_CITY = 60; //
+
+    public static final String RED_COLOR = "Red";
+    public static final String YELLOW_COLOR = "Yellow";
+    public static final String BLUE_COLOR = "Blue";
+    public static final String WHITE_COLOR = "White";
+    public static final String GREY_COLOR = "Dark Grey";
 
     public String getManufacturer() {
         return manufacturer;
@@ -49,17 +57,17 @@ public class Car {
         this.id = ++lastId;
     }
 
-    public Car (String manufacturer, String model, String color) {
+    public Car (String manufacturer, String model, Color color) {
         this(manufacturer, model); // re-using the previous constructor
         this.color = color;
     }
 
-    public Car(String manufacturer, String model, String color, double cc) {
+    public Car(String manufacturer, String model, Color color, double cc) {
         this(manufacturer, model, color);
         this.cc = cc;
     }
 
-    public Car(String manufacturer, String model, String color, double cc, int tankCapacity) {
+    public Car(String manufacturer, String model, Color color, double cc, int tankCapacity) {
         this(manufacturer, model, color, cc);
         this.tankCapacity = tankCapacity;
     }
@@ -76,11 +84,11 @@ public class Car {
         this.model = model;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
@@ -108,12 +116,21 @@ public class Car {
         Car.staticTankCapacity = staticTankCapacity;
     }
 
+    public CarType getType() {
+        return type;
+    }
+
+    public void setType(CarType type) {
+        this.type = type;
+    }
+
     // creating our first method:
     public String viewDetail() {
         StringBuilder sb = new StringBuilder();
         sb.append("\ncar.id = " + this.id);
         sb.append("\ncar.manufacturer = " + this.manufacturer); // we could also use this.getManufacturer
         sb.append("\ncar.model = " + this.model); // its the same
+        sb.append("\ncar.type = " + this.getType().getName());
         sb.append("\ncar.color = " + this.color);
         sb.append("\ncar.plateColor = " + plateColor); // notice that as this is a static method, we reference to it
         // without the "this" keyword
@@ -121,11 +138,11 @@ public class Car {
         return sb.toString();
     }
 
-    public static String getPlateColor(){
+    public static Color getPlateColor(){
         return plateColor;
     }
 
-    public static void setPlateColor(String color){
+    public static void setPlateColor(Color color){
         Car.plateColor = color;
     }
 
