@@ -15,6 +15,8 @@ public class S14_001_Car {
 
         subaru.setCc(2.0);
         subaru.setColor("White");
+        System.out.println("Max speed route: " + Car.MAX_SPEED_ROUTE);
+        System.out.println("Max speed city: " + Car.MAX_SPEED_CITY);
 
         System.out.println();
         subaru.viewDetail();

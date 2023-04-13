@@ -14,6 +14,9 @@ public class Car {
 
     static String plateColor = "grey";
 
+    public static final Integer MAX_SPEED_ROUTE = 120; // Here we are declaring a constant
+    public static final Integer MAX_SPEED_CITY = 60; //
+
     public String getManufacturer() {
         return manufacturer;
     }
