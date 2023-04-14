@@ -11,10 +11,12 @@ public class S14_001_Car {
         System.out.println("car.manufacturer = " + subaru.getManufacturer());
         System.out.println("car.model = " + subaru.getModel());
         System.out.println("car.color = " + subaru.getColor());
-        System.out.println("car.cc = " + subaru.getCc());
+        System.out.println("car.cc = " + subaru.getTank());
 
-        subaru.setCc(2.0);
+        Motor motorSubaru = new Motor(2.0, MotorType.BENCINA);
+        subaru.setMotor(motorSubaru);
         subaru.setColor(Color.WHITE);
+        subaru.setTank(new Tank());
         System.out.println("Max speed route: " + Car.MAX_SPEED_ROUTE);
         System.out.println("Max speed city: " + Car.MAX_SPEED_CITY);
         subaru.setType(CarType.HATCHBACK);
@@ -28,12 +30,12 @@ public class S14_001_Car {
         mazda.setManufacturer("Mazda");
         mazda.setModel("BT-50");
         mazda.setType(CarType.PICKUP);
-        mazda.setCc(3.0);
+        mazda.setMotor(new Motor(3.0, MotorType.DIESEL));
         mazda.setColor(Color.RED);
 
-        Car nissan = new Car("Nissan", "Navara", Color.GREY, 3.5, 50);
+        Car nissan = new Car("Nissan", "Navara", Color.GREY, new Motor(4.0,MotorType.DIESEL), new Tank());
         nissan.setType(CarType.PICKUP);
-        Car nissan2 = new Car("Nissan", "Navara", Color.GREY, 3.5, 50);
+        Car nissan2 = new Car("Nissan", "Navara", Color.GREY, new Motor(3.5,MotorType.BENCINA), new Tank(50));
         nissan2.setType(CarType.PICKUP);
 
         System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan == nissan2));

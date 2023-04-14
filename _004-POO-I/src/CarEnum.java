@@ -7,11 +7,11 @@ public class CarEnum {
 
         Car.setStaticTankCapacity(45);
         Car subaru = new Car("Subaru", "Impreza");
-        subaru.setCc(2.0);
+        subaru.setMotor(new Motor(2.0, MotorType.BENCINA));
         subaru.setColor(Color.WHITE);
         subaru.setType(CarType.HATCHBACK);
 
-        Car mazda = new Car("Mazda", "BT-50", Color.RED, 3.0);
+        Car mazda = new Car("Mazda", "BT-50", Color.RED, new Motor(3.0, MotorType.DIESEL));
         mazda.setType(CarType.PICKUP);
         System.out.println("mazda manufacturer: " + mazda.getManufacturer());
 

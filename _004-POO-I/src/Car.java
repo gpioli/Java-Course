@@ -1,17 +1,19 @@
 public class Car {
 
-
+    private int id;
     private String manufacturer;
     private String model;
     private Color color = Color.GREY; // default value
-    private double cc;
-    private int tankCapacity = 40;
+    private Motor motor;
+    private Tank tank;
+    private Person owner;
+    private Tire[] tires;
 
     private CarType type;
 
     private static int staticTankCapacity = 30;
 
-    private int id;
+
     private static int lastId;
 
     static Color plateColor = Color.GREY;
@@ -62,14 +64,20 @@ public class Car {
         this.color = color;
     }
 
-    public Car(String manufacturer, String model, Color color, double cc) {
+    public Car(String manufacturer, String model, Color color, Motor motor) {
         this(manufacturer, model, color);
-        this.cc = cc;
+        this.motor = motor;
     }
 
-    public Car(String manufacturer, String model, Color color, double cc, int tankCapacity) {
-        this(manufacturer, model, color, cc);
-        this.tankCapacity = tankCapacity;
+    public Car(String manufacturer, String model, Color color, Motor motor, Tank tank) {
+        this(manufacturer, model, color, motor);
+        this.tank = tank;
+    }
+
+    public Car(String manufacturer, String model, Color color, Motor motor, Tank tank, Person owner, Tire[] tires) {
+        this(manufacturer, model, color, motor, tank);
+        this.owner = owner;
+        this.tires = tires;
     }
 
     public void setManufacturer(String manufacturer) {
@@ -92,25 +100,6 @@ public class Car {
         this.color = color;
     }
 
-    public double getCc() {
-        return cc;
-    }
-
-    public void setCc(double cc) {
-        this.cc = cc;
-    }
-
-    public int getTankCapacity() {
-        return tankCapacity;
-    }
-
-    public void setTankCapacity(int tankCapacity) {
-        this.tankCapacity = tankCapacity;
-    }
-
-    public static int getStaticTankCapacity() {
-        return staticTankCapacity;
-    }
 
     public static void setStaticTankCapacity(int staticTankCapacity) {
         Car.staticTankCapacity = staticTankCapacity;
@@ -124,6 +113,38 @@ public class Car {
         this.type = type;
     }
 
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+
+    public Tank getTank() {
+        return tank;
+    }
+
+    public void setTank(Tank tank) {
+        this.tank = tank;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
+    }
+
+    public Tire[] getTires() {
+        return tires;
+    }
+
+    public void setTires(Tire[] tires) {
+        this.tires = tires;
+    }
+
     // creating our first method:
     public String viewDetail() {
         StringBuilder sb = new StringBuilder();
@@ -134,7 +155,7 @@ public class Car {
         sb.append("\ncar.color = " + this.color);
         sb.append("\ncar.plateColor = " + plateColor); // notice that as this is a static method, we reference to it
         // without the "this" keyword
-        sb.append("\ncar.cc = " + this.cc);
+        sb.append("\ncar.cc = " + this.motor.getCc());
         return sb.toString();
     }
 
@@ -162,11 +183,11 @@ public class Car {
     }
 
     public float calculateConsumption(int km, float fuelPercentage){
-        return km/(tankCapacity*fuelPercentage);
+        return km/(tank.getCapacity()*fuelPercentage);
     }
 
     public float calculateConsumption(int km, int fuelPercentage){
-        return km/((tankCapacity*fuelPercentage)/100f);
+        return km/((tank.getCapacity()*fuelPercentage)/100f);
     }
 
     public static float calculateStaticConsumption(int km, int fuelPercentage){
@@ -180,8 +201,8 @@ public class Car {
                 ", manufacturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
-                ", cc=" + cc +
-                ", tankCapacity=" + tankCapacity +
+                ", cc=" + motor.getCc() +
+                ", tankCapacity=" + tank.getCapacity() +
                 '}';
     }
 
