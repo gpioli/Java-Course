@@ -1,11 +1,22 @@
 import java.util.Date;
 
-public class S14_001_Car {
+public class S14_002_CarObjectsRelationships {
 
     public static void main(String[] args) {
 
         // Instantiating the object
         Car subaru = new Car("Subaru", "Impreza");
+
+        Tire[] tiresSubaru = new Tire[5];
+        tiresSubaru[0] = new Tire("Yokohama", 16, 7.5);
+        tiresSubaru[1] = new Tire("Yokohama", 16, 7.5);
+        tiresSubaru[2] = new Tire("Yokohama", 16, 7.5);
+        tiresSubaru[3] = new Tire("Yokohama", 16, 7.5);
+        tiresSubaru[4] = new Tire("Yokohama", 16, 7.5);
+        subaru.setTires(tiresSubaru);
+
+        Person subaruDriver = new Person("Luci", "Martinez");
+        subaru.setOwner(subaruDriver);
 
         // this will print default values
         System.out.println("car.manufacturer = " + subaru.getManufacturer());
@@ -27,6 +38,9 @@ public class S14_001_Car {
 
 
         Car mazda = new Car();
+
+        Person pato = new Person("Pato", "Rodriguez");
+        mazda.setOwner(pato);
         mazda.setManufacturer("Mazda");
         mazda.setModel("BT-50");
         mazda.setType(CarType.PICKUP);
@@ -34,9 +48,32 @@ public class S14_001_Car {
         //mazda.setTank(new Tank());
         mazda.setColor(Color.RED);
 
-        Car nissan = new Car("Nissan", "Navara", Color.GREY, new Motor(4.0,MotorType.DIESEL), new Tank());
+        Tire[] tiresMazda = {new Tire("Michelin", 18, 10.5),
+                new Tire("Michelin", 18, 10.5),
+                new Tire("Michelin", 18, 10.5),
+                new Tire("Michelin", 18, 10.5),
+                new Tire("Michelin", 18, 10.5)
+        };
+
+        mazda.setTires(tiresMazda);
+
+        Person bea = new Person("Bea", "Gonzalez");
+        Tire[] nissanTires = {new Tire("Pirelli", 20, 11.5),
+                new Tire("Pirelli", 20, 11.5),
+                new Tire("Pirelli", 20, 11.5),
+                new Tire("Pirelli", 20, 11.5),
+                new Tire("Pirelli", 20, 11.5)
+        };
+        Car nissan = new Car("Nissan", "Navara", Color.GREY, new Motor(4.0,MotorType.DIESEL), new Tank(), bea, nissanTires);
         nissan.setType(CarType.PICKUP);
-        Car nissan2 = new Car("Nissan", "Navara", Color.GREY, new Motor(3.5,MotorType.BENCINA), new Tank(50));
+        Person lalo = new Person("Lalo", "Mena");
+        Tire[] nissanTires2 = {new Tire("Pirelli", 20, 11.5),
+                new Tire("Pirelli", 20, 11.5),
+                new Tire("Pirelli", 20, 11.5),
+                new Tire("Pirelli", 20, 11.5),
+                new Tire("Pirelli", 20, 11.5)
+        };
+        Car nissan2 = new Car("Nissan", "Navara", Color.GREY, new Motor(3.5,MotorType.BENCINA), new Tank(50), lalo, nissanTires2);
         nissan2.setType(CarType.PICKUP);
 
         System.out.println("Are these objects equals? (nissan and nissan2) " + (nissan == nissan2));
@@ -83,6 +120,13 @@ public class S14_001_Car {
         System.out.println("subaru description = " + subaruType.getDescription());
 
         System.out.println(mazda.calculateConsumption(300, 70));
+
+        System.out.println("Subaru driver: " + subaru.getOwner());
+        System.out.println("Subaru tires: ");
+        for(Tire tire: subaru.getTires()){
+            System.out.print("manufacturer: " + tire.getManufacturer() + ", ring: " + tire.getRing() + ", wide: " +
+                    tire.getRing() + "\n");
+        }
 
     }
 

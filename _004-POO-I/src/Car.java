@@ -122,6 +122,9 @@ public class Car {
     }
 
     public Tank getTank() {
+        if (tank == null){
+            this.tank = new Tank();
+        }
         return tank;
     }
 
@@ -151,11 +154,28 @@ public class Car {
         sb.append("\ncar.id = " + this.id);
         sb.append("\ncar.manufacturer = " + this.manufacturer); // we could also use this.getManufacturer
         sb.append("\ncar.model = " + this.model); // its the same
-        sb.append("\ncar.type = " + this.getType().getName());
+        if (this.type != null) {
+            sb.append("\ncar.type = " + this.getType().getName());
+        }
         sb.append("\ncar.color = " + this.color);
         sb.append("\ncar.plateColor = " + plateColor); // notice that as this is a static method, we reference to it
         // without the "this" keyword
-        sb.append("\ncar.cc = " + this.motor.getCc());
+        if (this.motor != null){
+            sb.append("\ncar.cc = " + this.motor.getCc());
+        }
+
+        if (this.owner != null) {
+            sb.append("\ncar owner = " + this.getOwner());
+        }
+
+
+        if (getTires() != null) {
+            sb.append("\nCar tires = ");
+            for(Tire tire: this.getTires()){
+                sb.append("manufacturer: " + tire.getManufacturer() + ", ring: " + tire.getRing() + ", wide: " +
+                        tire.getRing() + "\n");
+            }
+        }
         return sb.toString();
     }
 
@@ -183,11 +203,11 @@ public class Car {
     }
 
     public float calculateConsumption(int km, float fuelPercentage){
-        return km/(tank.getCapacity()*fuelPercentage);
+        return km/(this.getTank().getCapacity()*fuelPercentage);
     }
 
     public float calculateConsumption(int km, int fuelPercentage){
-        return km/((tank.getCapacity()*fuelPercentage)/100f);
+        return km/((this.getTank().getCapacity()*fuelPercentage)/100f);
     }
 
     public static float calculateStaticConsumption(int km, int fuelPercentage){
@@ -196,14 +216,13 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "id: " + this.id +
+        String detail = "Car " + '\'' +
+                "id: " + this.id + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", color='" + color + '\'' +
-                ", cc=" + motor.getCc() +
-                ", tankCapacity=" + tank.getCapacity() +
-                '}';
+                ", model='" + model + '\'';
+
+
+        return detail;
     }
 
     // We override the equals method
