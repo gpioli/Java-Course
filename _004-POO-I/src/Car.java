@@ -8,6 +8,7 @@ public class Car {
     private Tank tank;
     private Person owner;
     private Tire[] tires;
+    private int indexTire;
 
     private CarType type;
 
@@ -57,6 +58,7 @@ public class Car {
 
     public Car() {
         this.id = ++lastId;
+        this.tires = new Tire[5];
     }
 
     public Car (String manufacturer, String model, Color color) {
@@ -146,6 +148,13 @@ public class Car {
 
     public void setTires(Tire[] tires) {
         this.tires = tires;
+    }
+
+    public Car addTire(Tire tire) {
+        if(indexTire < this.tires.length){
+            this.tires[indexTire++] = tire;
+        }
+        return this;
     }
 
     // creating our first method:

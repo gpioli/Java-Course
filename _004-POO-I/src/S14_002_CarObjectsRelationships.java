@@ -8,12 +8,12 @@ public class S14_002_CarObjectsRelationships {
         Car subaru = new Car("Subaru", "Impreza");
 
         Tire[] tiresSubaru = new Tire[5];
-        tiresSubaru[0] = new Tire("Yokohama", 16, 7.5);
-        tiresSubaru[1] = new Tire("Yokohama", 16, 7.5);
-        tiresSubaru[2] = new Tire("Yokohama", 16, 7.5);
-        tiresSubaru[3] = new Tire("Yokohama", 16, 7.5);
-        tiresSubaru[4] = new Tire("Yokohama", 16, 7.5);
-        subaru.setTires(tiresSubaru);
+        for (int i= 0; i < tiresSubaru.length; i++) {
+            subaru.addTire(new Tire("Yokohama", 16, 7.5)); // we implement the addTire method
+        }
+
+        //subaru.setTires(tiresSubaru);
+
 
         Person subaruDriver = new Person("Luci", "Martinez");
         subaru.setOwner(subaruDriver);
@@ -48,24 +48,39 @@ public class S14_002_CarObjectsRelationships {
         //mazda.setTank(new Tank());
         mazda.setColor(Color.RED);
 
-        Tire[] tiresMazda = {new Tire("Michelin", 18, 10.5),
-                new Tire("Michelin", 18, 10.5),
-                new Tire("Michelin", 18, 10.5),
-                new Tire("Michelin", 18, 10.5),
-                new Tire("Michelin", 18, 10.5)
-        };
+//        Tire[] tiresMazda = {new Tire("Michelin", 18, 10.5), // This can be optimized as in the subaru example
+//                new Tire("Michelin", 18, 10.5),
+//                new Tire("Michelin", 18, 10.5),
+//                new Tire("Michelin", 18, 10.5),
+//                new Tire("Michelin", 18, 10.5)
+//        };
 
-        mazda.setTires(tiresMazda);
+        //mazda.setTires(tiresMazda);
+
+        Tire[] tiresMazda = new Tire[5];
+        for (int i= 0; i < tiresMazda.length; i++) {
+            mazda.addTire(new Tire("Michelin", 18, 10.5)); // we implement the addTire method
+        }
 
         Person bea = new Person("Bea", "Gonzalez");
-        Tire[] nissanTires = {new Tire("Pirelli", 20, 11.5),
-                new Tire("Pirelli", 20, 11.5),
-                new Tire("Pirelli", 20, 11.5),
-                new Tire("Pirelli", 20, 11.5),
-                new Tire("Pirelli", 20, 11.5)
-        };
-        Car nissan = new Car("Nissan", "Navara", Color.GREY, new Motor(4.0,MotorType.DIESEL), new Tank(), bea, nissanTires);
+
+        Car nissan = new Car("Nissan", "Navara", Color.GREY, new Motor(4.0,MotorType.DIESEL), new Tank());
+        nissan.setOwner(bea);
         nissan.setType(CarType.PICKUP);
+
+        Tire[] nissanTires = new Tire[5];
+        for (int i= 0; i < nissanTires.length; i++) {
+            nissan.addTire(new Tire("Pirelli", 20, 11.5));
+        }
+
+        nissan.addTire(new Tire("Pirelli", 20, 11.5))
+                .addTire(new Tire("Pirelli", 20, 11.5))
+                .addTire(new Tire("Pirelli", 20, 11.5))
+                .addTire(new Tire("Pirelli", 20, 11.5))
+                .addTire(new Tire("Pirelli", 20, 11.5));
+
+
+
         Person lalo = new Person("Lalo", "Mena");
         Tire[] nissanTires2 = {new Tire("Pirelli", 20, 11.5),
                 new Tire("Pirelli", 20, 11.5),
