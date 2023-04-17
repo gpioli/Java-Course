@@ -1,4 +1,4 @@
-public class Car {
+public class Car implements Comparable<Car> {
 
     private int id;
     private String manufacturer;
@@ -225,8 +225,7 @@ public class Car {
 
     @Override
     public String toString() {
-        String detail = "Car " + '\'' +
-                "id: " + this.id + '\'' +
+        String detail = "Car id: " + this.id +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'';
 
@@ -252,7 +251,10 @@ public class Car {
         return (this.manufacturer != null && this.model != null &&
                 this.manufacturer.equals(a.getManufacturer()) &&
                 this.model.equals(a.getModel()));
+    }
 
-
+    @Override
+    public int compareTo(Car a) {
+        return this.manufacturer.compareTo(a.manufacturer);
     }
 }

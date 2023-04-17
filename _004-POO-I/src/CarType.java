@@ -5,7 +5,8 @@ public enum CarType {
     PICKUP("Pickup", "Truck", 4),
     COUPE("Coupe", "Small car", 2),
     CONVERTIBLE("Convertible", "Sportscar", 2),
-    WAGON("Wagon", "Utilitary", 3);
+    WAGON("Wagon", "Utilitary", 3),
+    SUV("SUV", "Sport all terrain", 5);
 
     private final String name;
     private final int doorsNum;
