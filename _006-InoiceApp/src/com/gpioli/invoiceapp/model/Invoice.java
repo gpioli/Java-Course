@@ -64,10 +64,8 @@ public class Invoice {
 
     public float calculateTotal(){
         float total = 0.0f;
-        for (InvoiceItem item: items) {
-            if(item == null){
-                continue;
-            }
+        for (int i = 0; i < itemsIndex; i++) {
+            InvoiceItem item = this.items[i];
             total += item.calculateItemTotal();
         }
         return total;
@@ -90,17 +88,10 @@ public class Invoice {
                 .append("\n")
                 .append("\n#\tName\t$\tCant.\tTotal\n");
 
-        for (InvoiceItem item: this.items) {
-            if(item == null){
-                continue;
-            }
-            sb.append(item.getProduct().getCode())
-                    .append("\t")
-                    .append(item.getProduct().getName())
-                    .append("\t")
-                    .append(item.getProduct().getPrice())
-                    .append(item.getAmount())
-                    .append(item.calculateItemTotal())
+        for (int i = 0; i < itemsIndex; i++) {
+            InvoiceItem item = this.items[i];
+
+            sb.append(item.toString())
                     .append("\n");
         }
 
@@ -110,4 +101,8 @@ public class Invoice {
         return sb.toString();
     }
 
+    @Override
+    public String toString() {
+        return generateDetail();
+    }
 }

@@ -1,9 +1,7 @@
 package com.gpioli.invoiceapp;
 
-import com.gpioli.invoiceapp.model.Client;
-import com.gpioli.invoiceapp.model.Invoice;
-import com.gpioli.invoiceapp.model.InvoiceItem;
-import com.gpioli.invoiceapp.model.Product;
+import com.gpioli.invoiceapp.model.*;
+
 
 import java.util.Scanner;
 
@@ -16,36 +14,28 @@ public class InvoiceExample {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter the invoice description: ");
-        String desc = s.nextLine();
-        Invoice invoice = new Invoice(desc, client);
+        Invoice invoice = new Invoice(s.nextLine(), client);
 
         Product product;
-        String name;
-        float price;
-        int amount;
 
         System.out.println();
-        for (int i = 0; i<5; i++) {
+        for (int i = 0; i < 2; i++) {
             product = new Product();
             System.out.println("Enter product n° " + product.getCode() + ": ");
-            name = s.nextLine();
-            product.setName(name);
+            product.setName(s.nextLine());
 
             System.out.println("Enter product price: ");
-            price = s.nextFloat();
-            product.setPrice(price);
+            product.setPrice(s.nextFloat());
 
             System.out.println("Enter product amount: ");
-            amount = s.nextInt();
 
-            InvoiceItem invoiceItem = new InvoiceItem(amount, product);
-            invoice.addInvoiceItem(invoiceItem);
+            invoice.addInvoiceItem(new InvoiceItem(s.nextInt(), product));
 
             System.out.println();
             s.nextLine(); //We move the cursor to the next iteration
         }
 
-        System.out.println(invoice.generateDetail());
+        System.out.println(invoice);
 
     }
 }

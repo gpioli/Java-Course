@@ -29,4 +29,11 @@ public class InvoiceItem {
     public float calculateItemTotal(){
         return this.amount * this.product.getPrice();
     }
+
+    @Override
+    public String toString() {
+        return product.toString() +
+                "\t" + amount +
+                "\t" + calculateItemTotal();
+    }
 }
