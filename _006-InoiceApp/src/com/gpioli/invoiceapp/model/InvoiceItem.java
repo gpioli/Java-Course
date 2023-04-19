@@ -25,4 +25,8 @@ public class InvoiceItem {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    public float calculateItemTotal(){
+        return this.amount * this.product.getPrice();
+    }
 }
