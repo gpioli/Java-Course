@@ -6,6 +6,32 @@ public class Calculator {
         return a + b;
     }
 
+    // Adding several arguments
+    public int sum(int...arguments){
+        int total = 0;
+        for(int argument: arguments){
+            total += argument;
+        }
+        return total;
+    }
+
+    // Adding several arguments, from different data types:
+    public float sum(float a, int...arguments){
+        float total = a;
+        for(int argument: arguments){
+            total += argument;
+        }
+        return total;
+    }
+
+    public double sum(double... varargs){
+        double total = 0.0;
+        for (double num: varargs){
+            total += num;
+        }
+        return total;
+    }
+
     public float sum(float x, float y) {
         return x + y;
     }

@@ -12,6 +12,9 @@ public class ExampleOverride {
         System.out.println("Sum double: " + cal.sum(10.0, 5.0));
         System.out.println("Sum String: " + cal.sum("10", "5"));
         System.out.println("Sum three int: " + cal.sum(10, 5, 3));
+        System.out.println("Sum three int: " + cal.sum(10, 5, 3, 4, 5, 6));
+        System.out.println("Sum three int: " + cal.sum(10.5F, 5, 3, 4, 5, 6));
+        System.out.println("Sum three int: " + cal.sum(10.0, 5.0, 3, 4, 5, 6));
 
         // What happens when we pass parameters that don't match with any method?
         // Type automatic conversion
