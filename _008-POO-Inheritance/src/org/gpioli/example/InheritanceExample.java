@@ -1,4 +1,7 @@
-package org.gpioli.pooinheritance;
+package org.gpioli.example;
+
+import org.gpioli.pooinheritance.Professor;
+import org.gpioli.pooinheritance.Student;
 
 public class InheritanceExample {
     public static void main(String[] args) {
