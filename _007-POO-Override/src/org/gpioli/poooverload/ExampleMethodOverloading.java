@@ -1,8 +1,8 @@
-package org.gpioli.poooverride;
+package org.gpioli.poooverload;
 
-import static org.gpioli.poooverride.Calculator.sum;
+import static org.gpioli.poooverload.Calculator.sum;
 
-public class ExampleOverride {
+public class ExampleMethodOverloading {
     public static void main(String[] args) {
 
         //Calculator cal = new Calculator();
