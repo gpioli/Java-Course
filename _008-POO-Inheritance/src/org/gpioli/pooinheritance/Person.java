@@ -11,6 +11,16 @@ public class Person {
         System.out.println("Person: initializing constructor");
     }
 
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Person(String firstName, String lastName, int age) {
+        this(firstName, lastName);
+        this.age = age;
+    }
+
     public String getFirstName() {
         return firstName;
     }

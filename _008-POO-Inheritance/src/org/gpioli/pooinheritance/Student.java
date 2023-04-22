@@ -12,6 +12,28 @@ public class Student extends Person {
         System.out.println("Student: initializing constructor");
     }
 
+    public Student(String firstName, String lastName){
+        super(firstName, lastName);
+    }
+
+    public Student(String firstName, String lastName, int age){
+        super(firstName, lastName, age);
+    }
+
+    public Student(String firstName, String lastName, int age, String collegeName){
+        super(firstName, lastName, age);
+        this.collegeName = collegeName;
+    }
+
+    public Student(String firstName, String lastName, int age,
+                   String collegeName, double mathsGrade, double historyGrade, double spanishGrade){
+        this(firstName, lastName, age, collegeName);
+        this.mathsGrade = mathsGrade;
+        this.historyGrade = historyGrade;
+        this.spanishGrade = spanishGrade;
+    }
+
+
     public String getCollegeName() {
         return collegeName;
     }

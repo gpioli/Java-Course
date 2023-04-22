@@ -8,6 +8,15 @@ public class Professor extends Person{
         System.out.println("Professor: initializing constructor");
     }
 
+    public Professor(String firstName, String lastName){
+        super(firstName, lastName);
+    }
+
+    public Professor(String firstName, String lastName, String subject){
+        this(firstName, lastName);
+        this.subject = subject;
+    }
+
     public String getSubject() {
         return subject;
     }
