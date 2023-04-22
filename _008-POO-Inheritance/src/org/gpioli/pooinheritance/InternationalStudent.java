@@ -5,6 +5,10 @@ public class InternationalStudent extends Student {
     private String country;
     private double languagesGrade;
 
+    public InternationalStudent() {
+        System.out.println("InternationalStudent: initializing constructor");
+    }
+
     public String getCountry() {
         return country;
     }

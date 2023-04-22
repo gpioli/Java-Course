@@ -7,6 +7,11 @@ public class Student extends Person {
     private double spanishGrade;
     private double historyGrade;
 
+    public Student() {
+        super(); // this is not necessary, but we can create the constructor of the super class explicitly
+        System.out.println("Student: initializing constructor");
+    }
+
     public String getCollegeName() {
         return collegeName;
     }

@@ -7,6 +7,7 @@ import org.gpioli.pooinheritance.Student;
 public class InheritanceExample {
     public static void main(String[] args) {
 
+        System.out.println("====== Creating an instance of the student class ======");
         Student student = new Student();
         student.setFirstName("Gaston");
         student.setLastName("Pioli");
@@ -16,6 +17,7 @@ public class InheritanceExample {
         student.setMathsGrade(6.3);
         student.setHistoryGrade(4.9);
 
+        System.out.println("====== Creating an instance of the InternationalStudent class ======");
         InternationalStudent intStudent = new InternationalStudent();
         intStudent.setFirstName("Peter");
         intStudent.setLastName("Gosling");
@@ -27,11 +29,14 @@ public class InheritanceExample {
         intStudent.setHistoryGrade(5.8);
         intStudent.setLanguagesGrade(6.8);
 
+        System.out.println("====== Creating an instance of the Professor class ======");
         Professor professor = new Professor();
         professor.setFirstName("Luci");
         professor.setLastName("Perez");
         professor.setSubject("Mathematics");
 
+
+        System.out.println("=========  ==========");
         System.out.println(student.getFirstName() + " " + student.getLastName());
         System.out.println(professor.getSubject() + " professor: " + professor.getFirstName() +
                 " " + professor.getLastName());

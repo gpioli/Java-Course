@@ -4,6 +4,10 @@ public class Professor extends Person{
 
     private String subject;
 
+    public Professor() {
+        System.out.println("Professor: initializing constructor");
+    }
+
     public String getSubject() {
         return subject;
     }
