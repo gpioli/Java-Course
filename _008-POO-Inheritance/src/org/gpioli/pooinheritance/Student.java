@@ -65,4 +65,25 @@ public class Student extends Person {
     public void setHistoryGrade(double historyGrade) {
         this.historyGrade = historyGrade;
     }
+
+    @Override
+    public String salute(){
+        String salute = super.salute();
+        return salute + " I'm a student and my name is " + this.getFirstName() + ".";
+    }
+
+    public double calculateGradesMean(){
+        //System.out.println("calculateGradesMean" + Student.class.getCanonicalName());
+        return (historyGrade + spanishGrade + mathsGrade) / 3;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\ncollegeName='" + collegeName + '\'' +
+                ", mathsGrade=" + mathsGrade +
+                ", spanishGrade=" + spanishGrade +
+                ", historyGrade=" + historyGrade +
+                ", grades mean: " + this.calculateGradesMean();
+    }
 }

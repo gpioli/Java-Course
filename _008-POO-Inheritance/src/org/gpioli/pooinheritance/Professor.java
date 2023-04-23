@@ -24,4 +24,15 @@ public class Professor extends Person{
     public void setSubject(String subject) {
         this.subject = subject;
     }
+
+    @Override
+    public String salute() {
+        return "Good morning, I am a professor of " + this.getSubject() + " and my name is " + this.getFirstName();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "subject='" + subject;
+    }
 }

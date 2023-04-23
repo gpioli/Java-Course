@@ -33,4 +33,22 @@ public class InternationalStudent extends Student {
     public void setLanguagesGrade(double languagesGrade) {
         this.languagesGrade = languagesGrade;
     }
+
+    @Override
+    public String salute() {
+        return super.salute() + " I'm a foreigner from " + this.getCountry() + ". ";
+    }
+
+    @Override
+    public double calculateGradesMean() {
+        //System.out.println("calculateGradesMean" + InternationalStudent.class.getCanonicalName());
+        return ( (super.calculateGradesMean()) * 3 + languagesGrade ) / 4;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\ncountry='" + country + '\'' +
+                ", languagesGrade=" + languagesGrade;
+    }
 }

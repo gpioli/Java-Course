@@ -52,4 +52,17 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String salute(){
+        return ("Hi, how are you doing?");
+    }
+
+    @Override
+    public String toString() {
+        return "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", salute='" + this.salute();
+    }
 }
