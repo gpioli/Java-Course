@@ -23,6 +23,10 @@ public class Employee extends Person{
         return employeeId;
     }
 
+    public void increaseSalary(int percentage){
+        this.salary += this.salary * percentage;
+    }
+
     @Override
     public String toString() {
         return super.toString() +
