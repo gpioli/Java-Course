@@ -1,4 +1,4 @@
-package org.piolicompany.com;
+package org.piolicompany.com.model;
 
 public class Client extends Person {
 
@@ -23,7 +23,7 @@ public class Client extends Person {
     @Override
     public String toString() {
         return super.toString() +
-                "clientId: " + clientId;
+                ", ClientId: " + clientId;
 
     }
 }

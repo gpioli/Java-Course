@@ -1,4 +1,4 @@
-package org.piolicompany.com;
+package org.piolicompany.com.model;
 
 public class Person {
 
@@ -47,7 +47,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "firstName: " + firstName +
-                ", lastName: " + lastName;
+        return "First Name: " + firstName +
+                ", Last Name: " + lastName;
     }
 }
