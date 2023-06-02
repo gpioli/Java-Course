@@ -1,6 +1,6 @@
-package org.piolig.pooabstractclassesform.elements;
+package org.piolig.pooabstractclasses.form.elements;
 
-import org.piolig.pooabstractclassesform.elements.select.Option;
+import org.piolig.pooabstractclasses.form.elements.select.Option;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +38,7 @@ public class SelectForm extends FormElements{
                     .append("'");
             if (option.isSelected()){
                 sb.append(" selected");
+                this.value = option.getValue();
             }
             sb.append(">")
                     .append(option.getName())

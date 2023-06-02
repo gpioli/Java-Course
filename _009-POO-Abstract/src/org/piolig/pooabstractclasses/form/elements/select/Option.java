@@ -1,4 +1,4 @@
-package org.piolig.pooabstractclassesform.elements.select;
+package org.piolig.pooabstractclasses.form.elements.select;
 
 public class Option {
 

@@ -1,4 +1,4 @@
-package org.piolig.pooabstractclassesform.elements;
+package org.piolig.pooabstractclasses.form.elements;
 
 abstract public class FormElements {
 

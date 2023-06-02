@@ -1,4 +1,4 @@
-package org.piolig.pooabstractclassesform.elements;
+package org.piolig.pooabstractclasses.form.elements;
 
 public class TextareaForm extends FormElements{
 
