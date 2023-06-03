@@ -1,6 +1,6 @@
 package org.piolig.pooabstractclasses.form.elements;
 
-public class TextareaForm extends FormElements{
+public class TextareaForm extends FormElement {
 
     private int rows;
     private int columns;
@@ -33,10 +33,10 @@ public class TextareaForm extends FormElements{
 
     @Override
     public String drawHtml() {
-        return "<textarea name='' cols='' rows=''>" +
+        return "<textarea name='" + this.name +
+                "' cols='" + this.columns +
+                "' rows='" + this.rows + "'>" +
                 this.value +
-                this.columns +
-                this.rows +
                 "</textarea>";
     }
 }

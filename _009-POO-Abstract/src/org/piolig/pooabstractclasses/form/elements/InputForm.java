@@ -1,6 +1,6 @@
 package org.piolig.pooabstractclasses.form.elements;
 
-public class InputForm extends FormElements{
+public class InputForm extends FormElement {
 
     private String type = "text";
 

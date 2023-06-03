@@ -5,7 +5,7 @@ import org.piolig.pooabstractclasses.form.elements.select.Option;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectForm extends FormElements{
+public class SelectForm extends FormElement {
 
     private List<Option> options;
 

@@ -1,14 +1,14 @@
 package org.piolig.pooabstractclasses.form.elements;
 
-abstract public class FormElements {
+abstract public class FormElement {
 
     protected String value;
     protected String name;
 
-    public FormElements() {
+    public FormElement() {
     }
 
-    public FormElements(String name) {
+    public FormElement(String name) {
         this();
         this.name = name;
     }
