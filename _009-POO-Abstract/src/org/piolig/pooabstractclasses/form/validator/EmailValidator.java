@@ -9,6 +9,9 @@ public class EmailValidator extends Validator{
 
     private final static String EMAIL_REGEX = "^(.+)@(.+)$";
 
+    public EmailValidator() {
+    }
+
     @Override
     public void setMessage(String message) {
         this.message = message;

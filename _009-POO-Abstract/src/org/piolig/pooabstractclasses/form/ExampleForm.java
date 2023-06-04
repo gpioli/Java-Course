@@ -2,6 +2,7 @@ package org.piolig.pooabstractclasses.form;
 
 import org.piolig.pooabstractclasses.form.elements.*;
 import org.piolig.pooabstractclasses.form.elements.select.Option;
+import org.piolig.pooabstractclasses.form.validator.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,13 +11,24 @@ public class ExampleForm {
     public static void main(String[] args) {
 
         InputForm userName = new InputForm("username");
-        InputForm password = new InputForm("key", "password");
+        userName.addValidator(new RequiredValidator());
+
+        InputForm password = new InputForm("password", "password");
+        password.addValidator(new RequiredValidator())
+                .addValidator(new LengthValidator());
+
         InputForm email = new InputForm("email", "email");
+        email.addValidator(new RequiredValidator())
+                .addValidator(new EmailValidator());
+
         InputForm age = new InputForm("age", "number");
+        age.addValidator(new NumberValidator());
 
         TextareaForm experience = new TextareaForm("exp", 5,9);
 
         SelectForm language = new SelectForm("language");
+        language.addValidator(new NotNullValidator());
+
         language.addOption(new Option("1", "Java"));
         language.addOption(new Option("2", "Python"))
                 .addOption(new Option("3", "JavaScript").setSelected())
@@ -35,7 +47,7 @@ public class ExampleForm {
 
         userName.setValue("john.doe");
         password.setValue("a1b2c3");
-        email.setValue("john.doe@mail.com");
+        email.setValue("john.doe@email.com");
         age.setValue("29");
         experience.setValue("... more than 8 years of experience in IT ...");
         //java.setSelected(true);
@@ -65,6 +77,12 @@ public class ExampleForm {
         elements.forEach(e -> {
             System.out.println(e.drawHtml());
             System.out.println("<br>");;
+        });
+
+        elements.forEach(e -> {
+            if(!e.isValid()){
+                e.getErrors().forEach(err -> System.out.println(e.getName() + ": " + err));
+            }
         });
 
     }

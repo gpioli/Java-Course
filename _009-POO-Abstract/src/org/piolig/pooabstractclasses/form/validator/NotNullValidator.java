@@ -1,6 +1,6 @@
 package org.piolig.pooabstractclasses.form.validator;
 
-public class NotNull extends Validator{
+public class NotNullValidator extends Validator{
 
     protected String message = "field cannot be null";
 

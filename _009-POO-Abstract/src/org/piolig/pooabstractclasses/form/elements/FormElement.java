@@ -22,14 +22,23 @@ abstract public class FormElement {
         this.name = name;
     }
 
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public List<String> getErrors() {
+        return errors;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public FormElement addValidator(Validator validator) {
         this.validatorList.add(validator);
         return this;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
 
     public boolean isValid() {
         for (Validator v : validatorList) {
