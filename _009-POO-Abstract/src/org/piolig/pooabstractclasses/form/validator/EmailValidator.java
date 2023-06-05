@@ -5,7 +5,7 @@ public class EmailValidator extends Validator{
     // we will use regular expressions in order to validate this... but a simple one.
     // not the best
 
-    protected String message = "email format is not valid";
+    protected String message = "-%s- field has an email format invalid";
 
     private final static String EMAIL_REGEX = "^(.+)@(.+)$";
 

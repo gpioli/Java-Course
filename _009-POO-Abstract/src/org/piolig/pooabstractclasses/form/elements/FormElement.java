@@ -1,5 +1,6 @@
 package org.piolig.pooabstractclasses.form.elements;
 
+import org.piolig.pooabstractclasses.form.validator.LengthValidator;
 import org.piolig.pooabstractclasses.form.validator.Validator;
 
 import java.util.ArrayList;
@@ -30,9 +31,6 @@ abstract public class FormElement {
         return errors;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public FormElement addValidator(Validator validator) {
         this.validatorList.add(validator);
@@ -43,12 +41,16 @@ abstract public class FormElement {
     public boolean isValid() {
         for (Validator v : validatorList) {
             if (!v.isValid(this.value)) {
-                this.errors.add(v.getMessage());
+                if (v instanceof LengthValidator) {
+                    this.errors.add(((LengthValidator) v).getFormattedMessage(name));
+                } else {
+                    this.errors.add(String.format(v.getMessage(), name));
+                }
+
             }
         }
         return this.errors.size() == 0;
     }
-
 
 
     abstract public String drawHtml();

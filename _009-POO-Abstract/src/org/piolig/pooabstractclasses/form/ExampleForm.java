@@ -15,7 +15,7 @@ public class ExampleForm {
 
         InputForm password = new InputForm("password", "password");
         password.addValidator(new RequiredValidator())
-                .addValidator(new LengthValidator());
+                .addValidator(new LengthValidator(6,12));
 
         InputForm email = new InputForm("email", "email");
         email.addValidator(new RequiredValidator())
@@ -45,10 +45,10 @@ public class ExampleForm {
 
         salute.setValue("Hi, this field is disabled!");
 
-        userName.setValue("john.doe");
-        password.setValue("a1b2c3");
-        email.setValue("john.doe@email.com");
-        age.setValue("29");
+        userName.setValue("");
+        password.setValue("");
+        email.setValue("john.doeemail.com");
+        age.setValue("29h");
         experience.setValue("... more than 8 years of experience in IT ...");
         //java.setSelected(true);
 
@@ -57,6 +57,7 @@ public class ExampleForm {
         List<FormElement> elements = Arrays.asList(userName,
                 password,
                 email,
+                age,
                 experience,
                 language,
                 salute);
@@ -81,7 +82,7 @@ public class ExampleForm {
 
         elements.forEach(e -> {
             if(!e.isValid()){
-                e.getErrors().forEach(err -> System.out.println(e.getName() + ": " + err));
+                e.getErrors().forEach(System.out::println);
             }
         });
 

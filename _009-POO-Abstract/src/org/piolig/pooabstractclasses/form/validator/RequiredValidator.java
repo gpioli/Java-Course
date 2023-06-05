@@ -2,7 +2,7 @@ package org.piolig.pooabstractclasses.form.validator;
 
 public class RequiredValidator extends Validator{
 
-    protected String message = "field cannot be null";
+    protected String message = "-%s- field cannot be null";
     @Override
     public void setMessage(String message) {
         this.message = message;

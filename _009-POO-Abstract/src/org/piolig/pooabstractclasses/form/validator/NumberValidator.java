@@ -2,7 +2,7 @@ package org.piolig.pooabstractclasses.form.validator;
 
 public class NumberValidator extends Validator{
 
-    protected String message = "field must be a number required";
+    protected String message = "-%s- field must be a number";
 
     @Override
     public void setMessage(String message) {
