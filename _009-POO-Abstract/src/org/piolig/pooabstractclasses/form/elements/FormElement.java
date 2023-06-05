@@ -2,6 +2,7 @@ package org.piolig.pooabstractclasses.form.elements;
 
 import org.piolig.pooabstractclasses.form.validator.LengthValidator;
 import org.piolig.pooabstractclasses.form.validator.Validator;
+import org.piolig.pooabstractclasses.form.validator.message.FormatableMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +42,8 @@ abstract public class FormElement {
     public boolean isValid() {
         for (Validator v : validatorList) {
             if (!v.isValid(this.value)) {
-                if (v instanceof LengthValidator) {
-                    this.errors.add(((LengthValidator) v).getFormattedMessage(name));
+                if (v instanceof FormatableMessage) {
+                    this.errors.add(((FormatableMessage) v).getFormattedMessage(name));
                 } else {
                     this.errors.add(String.format(v.getMessage(), name));
                 }

@@ -1,6 +1,9 @@
 package org.piolig.pooabstractclasses.form.validator;
 
-public class LengthValidator extends Validator{
+
+import org.piolig.pooabstractclasses.form.validator.message.FormatableMessage;
+
+public class LengthValidator extends Validator implements FormatableMessage {
 
     // we use a template, in order to be used later with String.format | %d stands for digit, but we could've used
     // %s and replace it with a string
@@ -45,8 +48,9 @@ public class LengthValidator extends Validator{
         return (length >= min && length <= max);
     }
 
-    public String getFormattedMessage(String field){
+    @Override
+    public String getFormattedMessage(String field) {
         return String.format(this.message, field, this.min, this.max);
-
     }
+
 }
