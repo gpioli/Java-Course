@@ -45,10 +45,10 @@ public class ExampleForm {
 
         salute.setValue("Hi, this field is disabled!");
 
-        userName.setValue("");
-        password.setValue("");
-        email.setValue("john.doeemail.com");
-        age.setValue("29h");
+        userName.setValue("john.doe");
+        password.setValue("abc2");
+        email.setValue("john.doe@email.com");
+        age.setValue("29");
         experience.setValue("... more than 8 years of experience in IT ...");
         //java.setSelected(true);
 
