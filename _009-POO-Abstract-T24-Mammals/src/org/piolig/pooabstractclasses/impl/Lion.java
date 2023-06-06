@@ -24,7 +24,7 @@ public class Lion extends Feline {
 
     @Override
     public String eat() {
-        return null;
+        return String.format("The Lion hunts with his herd of %s individuals in the african plain", this.herdNumber);
     }
 
     @Override
