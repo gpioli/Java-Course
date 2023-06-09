@@ -24,12 +24,12 @@ public class Lion extends Feline {
 
     @Override
     public String eat() {
-        return String.format("The Lion hunts with his herd of %s individuals in the %s", this.herdNumber, this.getHabitat());
+        return String.format("The lion hunts with his herd of %s individuals in the %s", this.herdNumber, this.getHabitat());
     }
 
     @Override
     public String sleep() {
-        return String.format("The Lions sleeps tonight with his herd (%s)", this.herdNumber);
+        return String.format("The lion sleeps tonight with his herd (%s)", this.herdNumber);
     }
 
     @Override

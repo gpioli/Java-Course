@@ -11,22 +11,22 @@ public class Cheetah extends Feline {
 
     @Override
     public String eat() {
-        return String.format("The Cheetah eats using his claws of %s cm!", this.getClawSize());
+        return String.format("The cheetah eats using his claws of %s cm!", this.getClawSize());
     }
 
     @Override
     public String sleep() {
-        return String.format("The Cheetah sleeps peacefully in the (%s)", this.getHabitat());
+        return String.format("The cheetah sleeps peacefully in the (%s)", this.getHabitat());
     }
 
     @Override
     public String run() {
-        return String.format("The Cheetah is running at %s km/h!", this.getSpeed());
+        return String.format("The cheetah is running at %s km/h!", this.getSpeed());
     }
 
     @Override
     public String communicate() {
-        return String.format("The Cheetah can communicate only with animals of the same specie, '%s' ",
+        return String.format("The cheetah can communicate only with animals of the same specie, '%s' ",
                 this.getScientificName());
     }
 }

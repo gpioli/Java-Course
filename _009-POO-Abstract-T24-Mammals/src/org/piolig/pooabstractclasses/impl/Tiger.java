@@ -26,7 +26,7 @@ public class Tiger extends Feline {
 
     @Override
     public String run() {
-        return String.format("The lion is running at %s km/h!", this.getSpeed());
+        return String.format("The tiger is running at %s km/h!", this.getSpeed());
     }
 
     @Override

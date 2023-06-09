@@ -40,7 +40,7 @@ public class Wolf extends Canine {
 
     @Override
     public String communicate() {
-        return String.format("The Cheetah can communicate only with animals of the same specie, '%s' ",
+        return String.format("The wolf can communicate only with animals of the same specie, '%s' ",
                 this.getScientificName());
     }
 }

@@ -17,12 +17,12 @@ public class Dog extends Feline {
 
     @Override
     public String eat() {
-        return String.format("The wolf eats using his amazing bitepower of %s PSI!", this.getBitePower());
+        return String.format("The wodoglf eats using his amazing bitepower of %s PSI!", this.getBitePower());
     }
 
     @Override
     public String sleep() {
-        return String.format("The wolf sleeps peacefully in the (%s)", this.getHabitat());
+        return String.format("The dog sleeps peacefully in the (%s)", this.getHabitat());
     }
 
     @Override
@@ -33,7 +33,7 @@ public class Dog extends Feline {
 
     @Override
     public String communicate() {
-        return String.format("The Cheetah can communicate only with animals of the same specie, '%s' ",
+        return String.format("The dog can communicate only with animals of the same specie, '%s' ",
                 this.getScientificName());
     }
 }
