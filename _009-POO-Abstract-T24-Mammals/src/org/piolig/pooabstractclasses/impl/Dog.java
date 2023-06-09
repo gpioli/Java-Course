@@ -17,21 +17,23 @@ public class Dog extends Feline {
 
     @Override
     public String eat() {
-        return null;
+        return String.format("The wolf eats using his amazing bitepower of %s PSI!", this.getBitePower());
     }
 
     @Override
     public String sleep() {
-        return null;
+        return String.format("The wolf sleeps peacefully in the (%s)", this.getHabitat());
     }
 
     @Override
     public String run() {
-        return null;
+        return String.format("Due to its light weight of %s, the dog can run at an amazing speed!",
+                this.weight);
     }
 
     @Override
     public String communicate() {
-        return null;
+        return String.format("The Cheetah can communicate only with animals of the same specie, '%s' ",
+                this.getScientificName());
     }
 }

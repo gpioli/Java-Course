@@ -17,21 +17,20 @@ public class Tiger extends Feline {
 
     @Override
     public String eat() {
-        return null;
+        return String.format("The tiger eats using his claws of %s cm!", this.getClawSize());
     }
 
     @Override
-    public String sleep() {
-        return null;
+    public String sleep() { return String.format("The tiger sleeps peacefully in the (%s)", this.getHabitat());
     }
 
     @Override
     public String run() {
-        return null;
+        return String.format("The lion is running at %s km/h!", this.getSpeed());
     }
 
     @Override
     public String communicate() {
-        return null;
+        return String.format("The tiger can communicate only with animals of the same specie, '%s' ", this.species);
     }
 }
