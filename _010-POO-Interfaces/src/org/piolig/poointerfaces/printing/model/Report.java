@@ -13,8 +13,8 @@ public class Report extends Leaf{
 
     @Override
     public String print() {
-        return "Repor written by: " + author +
-                "Reviewd by: " + reviewer +
+        return "Report written by: " + author +
+                "Reviewed by: " + reviewer +
                 "\n " + this.content;
     }
 }
