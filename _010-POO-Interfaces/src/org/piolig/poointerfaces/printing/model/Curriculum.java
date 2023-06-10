@@ -3,7 +3,7 @@ package org.piolig.poointerfaces.printing.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Curriculum extends Leaf{
+public class Curriculum extends Sheet implements Printable {
 
     private String person;
     private String profession;
@@ -17,7 +17,7 @@ public class Curriculum extends Leaf{
         this.experiences = new ArrayList<>();
     }
 
-    public Curriculum addExperiences(String exp){
+    public Curriculum addExperiences(String exp) {
         this.experiences.add(exp);
         return this;
     }
@@ -25,12 +25,13 @@ public class Curriculum extends Leaf{
     @Override
     public String print() {
         StringBuilder sb = new StringBuilder();
-        sb.append(person).append("\n")
-                .append("Resumé: ").append(this.content)
+        sb.append("\n===CV INFORMATION===\n")
+                .append(person).append("\n")
+                .append("Resume: ").append(this.content)
                 .append("\n").append("Profession: ")
                 .append(this.profession).append("\n")
                 .append("Experience: \n");
-        for (String exp: this.experiences){
+        for (String exp : this.experiences) {
             sb.append("- ").append(exp).append("\n");
         }
         return sb.toString();

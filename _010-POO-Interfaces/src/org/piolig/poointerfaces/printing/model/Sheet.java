@@ -1,12 +1,12 @@
 package org.piolig.poointerfaces.printing.model;
 
-abstract public class Leaf {
+abstract public class Sheet implements Printable{
 
     protected String content;
 
     abstract public String print();
 
-    public Leaf(String content) {
+    public Sheet(String content) {
         this.content = content;
     }
 }

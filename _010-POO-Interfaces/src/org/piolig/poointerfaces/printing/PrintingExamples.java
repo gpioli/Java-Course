@@ -1,8 +1,8 @@
 package org.piolig.poointerfaces.printing;
 
-import org.piolig.poointerfaces.printing.model.Curriculum;
-import org.piolig.poointerfaces.printing.model.Leaf;
-import org.piolig.poointerfaces.printing.model.Report;
+import org.piolig.poointerfaces.printing.model.*;
+
+import static org.piolig.poointerfaces.printing.model.Genre.*;
 
 public class PrintingExamples {
 
@@ -17,14 +17,28 @@ public class PrintingExamples {
 
         Report report = new Report("Martin Fowler", "James Bond", "Study on microservices");
 
+        Book book = new Book("Erich Gamma", "Design Patterns: reusable elements POO", EDUCATION);
+        book.addPage(new Page("Singleton pattern"))
+                .addPage(new Page("Watcher patterns"))
+                .addPage(new Page("Factory pattern"))
+                .addPage(new Page("Composite patterns"))
+                .addPage(new Page("Facade patterns"));
+
         print(cv);
         print(report);
+        // this wont work, as a book doesnt extends from Sheet
+        // print(book);
+
+        // We will fix this by creating an interface (see Printable, which now is implemented in almost every class):
+
+        print(book);
+
 
 
     }
 
 
-    public static void print(Leaf printable){
+    public static void print(Printable printable) {
         System.out.println(printable.print());
     }
 

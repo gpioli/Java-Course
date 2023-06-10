@@ -1,6 +1,6 @@
 package org.piolig.poointerfaces.printing.model;
 
-public class Report extends Leaf{
+public class Report extends Sheet implements Printable{
 
     private String author;
     private String reviewer;
@@ -13,8 +13,9 @@ public class Report extends Leaf{
 
     @Override
     public String print() {
-        return "Report written by: " + author +
-                "Reviewed by: " + reviewer +
-                "\n " + this.content;
+        return "\n===REPORT INFORMATION===" +
+                "\nReport written by: " + author +
+                "\nReviewed by: " + reviewer +
+                "\n" + this.content;
     }
 }
