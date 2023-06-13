@@ -41,7 +41,7 @@ public class PrintingExamples {
         print(new Printable() {
             @Override
             public String print(){
-                return "Hi, wazup? Printing a generic object from an anonymus class";
+                return "Hi, wazup? Printing a generic object from an anonymous class";
             }
         });
 
