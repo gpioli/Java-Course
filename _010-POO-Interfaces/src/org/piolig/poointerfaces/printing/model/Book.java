@@ -7,11 +7,11 @@ import java.util.List;
 public class Book implements Printable {
 
     private List<Printable> pages;
-    private String author;
+    private Person author;
     private String title;
     private Genre genre;
 
-    public Book(String author, String title, Genre genre) {
+    public Book(Person author, String title, Genre genre) {
         this.author = author;
         this.title = title;
         this.genre = genre;

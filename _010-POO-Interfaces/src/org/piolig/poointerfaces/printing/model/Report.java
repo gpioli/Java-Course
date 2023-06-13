@@ -2,10 +2,10 @@ package org.piolig.poointerfaces.printing.model;
 
 public class Report extends Sheet implements Printable{
 
-    private String author;
-    private String reviewer;
+    private Person author;
+    private Person reviewer;
 
-    public Report(String author, String reviewer, String content) {
+    public Report(Person author, Person reviewer, String content) {
         super(content);
         this.author = author;
         this.reviewer = reviewer;

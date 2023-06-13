@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Curriculum extends Sheet implements Printable {
 
-    private String person;
+    private Person person;
     private String profession;
     private List<String> experiences;
 
-    public Curriculum(String person, String profession, String content) {
+    public Curriculum(Person person, String profession, String content) {
         super(content);
         this.person = person;
         this.profession = profession;

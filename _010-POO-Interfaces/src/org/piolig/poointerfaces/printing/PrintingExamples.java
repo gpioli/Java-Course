@@ -8,16 +8,18 @@ public class PrintingExamples {
 
     public static void main(String[] args) {
 
-        Curriculum cv = new Curriculum("John Doe", "Engineer", "Labour data...");
+        Curriculum cv = new Curriculum(new Person("John", "Doe"), "Engineer", "Labour data...");
         cv.addExperiences("Java")
                 .addExperiences("Oracle DBA")
                 .addExperiences("Spring Framework")
                 .addExperiences("FullStack developer")
                 .addExperiences("Angular");
 
-        Report report = new Report("Martin Fowler", "James Bond", "Study on microservices");
+        Report report = new Report(new Person("Martin", "Fowler"),
+                new Person("James", "Gosling"), "Study on microservices");
 
-        Book book = new Book("Erich Gamma", "Design Patterns: reusable elements POO", EDUCATION);
+        Book book = new Book(new Person("Erich", "Gamma"),
+                "Design Patterns: reusable elements POO", EDUCATION);
         book.addPage(new Page("Singleton pattern"))
                 .addPage(new Page("Watcher patterns"))
                 .addPage(new Page("Factory pattern"))
@@ -32,7 +34,6 @@ public class PrintingExamples {
         // We will fix this by creating an interface (see Printable, which now is implemented in almost every class):
 
         print(book);
-
 
 
     }
