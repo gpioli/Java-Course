@@ -3,6 +3,7 @@ package org.piolig.poointerfaces.printing;
 import org.piolig.poointerfaces.printing.model.*;
 
 import static org.piolig.poointerfaces.printing.model.Genre.*;
+import static org.piolig.poointerfaces.printing.model.Printable.*;
 
 public class PrintingExamples {
 
@@ -26,7 +27,8 @@ public class PrintingExamples {
                 .addPage(new Page("Composite patterns"))
                 .addPage(new Page("Facade patterns"));
 
-        print(cv);
+        Printable.print(cv);
+        // after importing the static method
         print(report);
         // this wont work, as a book doesnt extends from Sheet
         // print(book);
@@ -35,12 +37,19 @@ public class PrintingExamples {
 
         print(book);
 
+        // Anonymus class:
+        print(new Printable() {
+            @Override
+            public String print(){
+                return "Hi, wazup? Printing a generic object from an anonymus class";
+            }
+        });
+
+        System.out.println(DEFAULT_TEXT);
+
 
     }
 
 
-    public static void print(Printable printable) {
-        System.out.println(printable.print());
-    }
 
 }
