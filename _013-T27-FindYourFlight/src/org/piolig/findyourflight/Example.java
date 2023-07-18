@@ -57,9 +57,11 @@ public class Example {
 
         System.out.println("\n\n=====================================\n");
 
-        System.out.println("\nOrdering flights by paxNumber DESC");
+        System.out.println("\nOrdering flights by paxNumber DESC: \n");
         List<Flight> flightsByPaxNumberDesc = new ArrayList<>(flights);
-        flightsByPaxNumberDesc.sort(Comparator.comparing(Flight::getPaxNumber));
+        //flightsByPaxNumberDesc.sort(Comparator.comparing(Flight::getPaxNumber));
+        // Another way with lambda functions:
+        flightsByPaxNumberDesc.sort((f1, f2) -> Integer.valueOf(f1.getPaxNumber()).compareTo(f2.getPaxNumber()));
         flightsByPaxNumberDesc.forEach(System.out::println);
 
         System.out.println("\n=====================================\n");
