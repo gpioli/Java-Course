@@ -1,7 +1,6 @@
 package org.piolig.findyourflight.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 
 public class Flight {
@@ -49,7 +48,7 @@ public class Flight {
                 ", DATE: " + date +
                 ", PAXNUMBER: " + paxNumber;
     }
-
+/*
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,7 +60,7 @@ public class Flight {
     @Override
     public int hashCode() {
         return Objects.hash(flightCode, origin, destination, date, paxNumber);
-    }
+    }*/
 
     // We could implement the compareTo method that comes with the Comparable interface, but this would destroy
     // the initial order of the list, and its not the idea
