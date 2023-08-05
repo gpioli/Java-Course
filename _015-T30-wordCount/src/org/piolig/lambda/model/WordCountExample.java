@@ -14,25 +14,33 @@ public class WordCountExample {
 
             List<String> phraseWords = Arrays.asList(phrase.split(" "));
 
-            for(String word: phraseWords) {
-                if (!phraseWordCount.containsKey(word)){
+            for (String word : phraseWords) {
+                if (!phraseWordCount.containsKey(word)) {
                     phraseWordCount.put(word, 1);
                 } else {
                     phraseWordCount.put(word, phraseWordCount.get(word) + 1);
                 }
-            };
+            }
 
             String mostRepeatedWord = "";
             Integer repetitions = 0;
 
-            for(String key : phraseWordCount.keySet()){
+            for (String key : phraseWordCount.keySet()) {
                 if (phraseWordCount.get(key) > repetitions) {
                     mostRepeatedWord = key;
                     repetitions = phraseWordCount.get(key);
                 }
             }
 
-            return mostRepeatedWord;
+            String finalMostRepeatedWord = mostRepeatedWord;
+            Integer finalRepetitions = repetitions;
+            HashMap<String, Integer> r = new HashMap<String, Integer>() {
+                {
+                    put(finalMostRepeatedWord, finalRepetitions);
+                }
+            };
+
+            return r;
 
         };
 
@@ -40,7 +48,7 @@ public class WordCountExample {
                 "at least 10 hours a day. Pancho is quite sociable with humans, but doesn't get along well with other" +
                 " dogs. ";
 
-        String wordWithTheMostRepetitions = lambdaWordCount.countWords(phrase);
+        Map wordWithTheMostRepetitions = lambdaWordCount.countWords(phrase);
         System.out.println("The word that repeats more times is: \'" + wordWithTheMostRepetitions + "\'. ");
 
     }
