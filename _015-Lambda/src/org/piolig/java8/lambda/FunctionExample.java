@@ -1,10 +1,11 @@
 package org.piolig.java8.lambda;
 
+import java.util.concurrent.ExecutionException;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class FunctionExample {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException {
 
         Function<String,String> f1 = (param) -> "Hello, what's up " + param + "!?";
 
