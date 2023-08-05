@@ -36,12 +36,12 @@ public class WordCountExample {
 
         };
 
-        String phrase = "I love my dog Pancho. He is the best dog of all. Pancho likes playing a lot, and sleeping " +
-                "for several hours a day. Pancho is quite sociable with humans, but doesn't get along well with other" +
+        String phrase = "I love my dog Pancho. He is the best dog of all. Pancho likes playing a lot and sleeping " +
+                "at least 10 hours a day. Pancho is quite sociable with humans, but doesn't get along well with other" +
                 " dogs. ";
 
         String wordWithTheMostRepetitions = lambdaWordCount.countWords(phrase);
-        System.out.println(wordWithTheMostRepetitions);
+        System.out.println("The word that repeats more times is: \'" + wordWithTheMostRepetitions + "\'. ");
 
     }
 
