@@ -1,8 +1,5 @@
 package org.piolig.lambda.model;
 
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
-
-import java.security.Key;
 import java.util.*;
 
 public class WordCountExample {
@@ -12,7 +9,7 @@ public class WordCountExample {
         CountWords lambdaWordCount = (phrase) -> {
             Map<String, Integer> phraseWordCount = new HashMap<>();
 
-            List<String> phraseWords = Arrays.asList(phrase.split(" "));
+            String[] phraseWords = phrase.split(" ");
 
             for (String word : phraseWords) {
                 if (!phraseWordCount.containsKey(word)) {
@@ -34,6 +31,11 @@ public class WordCountExample {
 
             String finalMostRepeatedWord = mostRepeatedWord;
             Integer finalRepetitions = repetitions;
+
+            // Ways of returning a map:
+            return Collections.singletonMap(finalMostRepeatedWord, finalRepetitions);
+
+            /*
             HashMap<String, Integer> r = new HashMap<String, Integer>() {
                 {
                     put(finalMostRepeatedWord, finalRepetitions);
@@ -42,14 +44,21 @@ public class WordCountExample {
 
             return r;
 
+
+             */
         };
 
         String phrase = "I love my dog Pancho. He is the best dog of all. Pancho likes playing a lot and sleeping " +
                 "at least 10 hours a day. Pancho is quite sociable with humans, but doesn't get along well with other" +
                 " dogs. ";
 
-        Map wordWithTheMostRepetitions = lambdaWordCount.countWords(phrase);
-        System.out.println("The word that repeats more times is: \'" + wordWithTheMostRepetitions + "\'. ");
+        Map<String, Integer> wordWithTheMostRepetitions = lambdaWordCount.countWords(phrase);
+
+        for(String key: wordWithTheMostRepetitions.keySet()) {
+            System.out.println("The word that repeats more times is: '" + key + "' with" +
+                    " " + wordWithTheMostRepetitions.get(key) + " repetitions."); // The word that repeats more times is: 'Pancho' with 2 repetitions.
+        }
+
 
     }
 

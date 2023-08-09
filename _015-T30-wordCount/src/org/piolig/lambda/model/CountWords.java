@@ -1,10 +1,10 @@
 package org.piolig.lambda.model;
 
-import java.util.HashMap;
+import java.util.Map;
 
 @FunctionalInterface
 public interface CountWords {
 
-    HashMap<String, Integer> countWords(String phrase);
+    Map<String, Integer> countWords(String phrase);
 
 }
