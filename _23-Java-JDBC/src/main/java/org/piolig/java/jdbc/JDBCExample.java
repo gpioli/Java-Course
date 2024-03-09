@@ -8,6 +8,9 @@ public class JDBCExample {
         String url = "jdbc:mysql://localhost:3307/java_course?serverTimezone=America/Montevideo";
         String username = "root";
         String password = "sasa";
+        // try with auto-close
+        // this help us avoid handling closing all the used resources, they close automatically
+        // also exceptions are handled automatically
         try (
                 Connection conn = DriverManager.getConnection(url, username, password);
                 Statement stmt = conn.createStatement();

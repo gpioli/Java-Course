@@ -1,5 +1,6 @@
 package org.piolig.java.jdbc;
 
+import org.piolig.java.jdbc.model.Category;
 import org.piolig.java.jdbc.model.Product;
 import org.piolig.java.jdbc.repository.ProductRepository;
 import org.piolig.java.jdbc.repository.Repository;
@@ -23,15 +24,18 @@ public class JDBCExampleOptimizedUpdate {
             repository.findAll().forEach(System.out::println);
 
             System.out.println("\n==================== Searching for id = 2 ==================== ");
-            System.out.println(repository.byId(2L));
+            System.out.println(repository.byId(3L));
 
-            System.out.println("\n==================== inserting new product ==================== ");
+            System.out.println("\n==================== update product ==================== ");
             Product product = new Product();
-            product.setName("Mechanical Keyboard");
-            product.setPrice(500);
-            product.setDate(new Date());
+            product.setId(5L);
+            product.setName("Razr mechanical Keyboard");
+            product.setPrice(700);
+            Category category = new Category();
+            category.setId(3L);
+            product.setCategory(category);
             repository.save(product);
-            System.out.println("Product successfully saved");
+            System.out.println("Product successfully updated");
 
             System.out.println("==================== list / findAll ==================== ");
             repository.findAll().forEach(System.out::println);

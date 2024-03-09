@@ -1,31 +1,43 @@
 package org.piolig.java.jdbc;
 
+import org.piolig.java.jdbc.model.Category;
+import org.piolig.java.jdbc.model.Product;
+import org.piolig.java.jdbc.repository.ProductRepository;
+import org.piolig.java.jdbc.repository.Repository;
+import org.piolig.java.jdbc.util.DBConnection;
+
 import java.sql.*;
+import java.util.Date;
 
 public class JDBCExampleOptimized {
     public static void main(String[] args) {
 
-        String url = "jdbc:mysql://localhost:3307/java_course?serverTimezone=America/Montevideo";
-        String username = "root";
-        String password = "sasa";
         // try with auto-close
         // this help us avoid handling closing all the used resources, they close automatically
         // also exceptions are handled automatically
-        try (
-                Connection conn = DriverManager.getConnection(url, username, password);
-                Statement stmt = conn.createStatement();
-                ResultSet result = stmt.executeQuery("SELECT * FROM products");
-                ) {
+        try (Connection conn = DBConnection.getInstance() ) {
 
-            while (result.next()){
-                System.out.print(result.getInt("id"));
-                System.out.print(" | ");
-                System.out.print(result.getString("name"));
-                System.out.print(" | ");
-                System.out.print(result.getInt("price"));
-                System.out.print(" | ");
-                System.out.println(result.getDate("registry_date"));
-            }
+            Repository<Product> repository = new ProductRepository();
+
+            System.out.println("==================== list / findAll ==================== ");
+            repository.findAll().forEach(System.out::println);
+
+            System.out.println("\n==================== Searching for id = 2 ==================== ");
+            System.out.println(repository.byId(2L));
+
+            System.out.println("\n==================== inserting new product ==================== ");
+            Product product = new Product();
+            product.setName("Razr mechanical Keyboard");
+            product.setPrice(500);
+            product.setDate(new Date());
+            Category category = new Category();
+            category.setId(3L);
+            product.setCategory(category);
+            repository.save(product);
+            System.out.println("Product successfully saved");
+
+            System.out.println("==================== list / findAll ==================== ");
+            repository.findAll().forEach(System.out::println);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

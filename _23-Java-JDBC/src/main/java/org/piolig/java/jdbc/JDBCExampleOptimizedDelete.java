@@ -21,16 +21,12 @@ public class JDBCExampleOptimizedDelete {
             System.out.println("==================== list / findAll ==================== ");
             repository.findAll().forEach(System.out::println);
 
-            System.out.println("\n==================== Searching for id = 2 ==================== ");
+            System.out.println("\n==================== Searching for id = 3 ==================== ");
             System.out.println(repository.byId(3L));
 
-            System.out.println("\n==================== update product ==================== ");
-            Product product = new Product();
-            product.setId(3L);
-            product.setName("Razr Keyboard");
-            product.setPrice(700);
-            repository.save(product);
-            System.out.println("Product successfully updated");
+            System.out.println("\n==================== delete product ==================== ");
+            repository.delete(3L);
+            System.out.println("Product successfully deleted");
 
             System.out.println("==================== list / findAll ==================== ");
             repository.findAll().forEach(System.out::println);
