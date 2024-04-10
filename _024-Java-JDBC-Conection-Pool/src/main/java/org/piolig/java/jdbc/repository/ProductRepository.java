@@ -18,7 +18,8 @@ public class ProductRepository implements Repository<Product> {
     public List<Product> findAll() {
         List<Product> products = new ArrayList<>();
 
-        try (Statement stmt = getConnection().createStatement();
+        try (Connection connection = getConnection();
+                Statement stmt = getConnection().createStatement();
              ResultSet resultSet = stmt.executeQuery("SELECT p.*, c.name as category FROM products as p " +
                      "JOIN categories as c ON p.category_id = c.id")) {
 
