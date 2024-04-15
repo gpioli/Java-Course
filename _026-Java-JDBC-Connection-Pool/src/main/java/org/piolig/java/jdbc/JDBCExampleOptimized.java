@@ -1,14 +1,15 @@
 package org.piolig.java.jdbc;
 
+import org.piolig.java.jdbc.model.Category;
 import org.piolig.java.jdbc.model.Product;
 import org.piolig.java.jdbc.repository.ProductRepository;
 import org.piolig.java.jdbc.repository.Repository;
 import org.piolig.java.jdbc.util.DBConnection;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Date;
 
-public class JDBCExampleOptimizedDelete {
+public class JDBCExampleOptimized {
     public static void main(String[] args) {
 
         // try with auto-close
@@ -16,17 +17,24 @@ public class JDBCExampleOptimizedDelete {
         // also exceptions are handled automatically
         try (Connection conn = DBConnection.getConnection() ) {
 
-            Repository<Product> repository = new ProductRepository(conn);
+            Repository<Product> repository = new ProductRepository();
 
             System.out.println("==================== list / findAll ==================== ");
             repository.findAll().forEach(System.out::println);
 
-            System.out.println("\n==================== Searching for id = 3 ==================== ");
-            System.out.println(repository.byId(3L));
+            System.out.println("\n==================== Searching for id = 2 ==================== ");
+            System.out.println(repository.byId(2L));
 
-            System.out.println("\n==================== delete product ==================== ");
-            repository.delete(3L);
-            System.out.println("Product successfully deleted");
+            System.out.println("\n==================== inserting new product ==================== ");
+            Product product = new Product();
+            product.setName("Notebook Omen HP");
+            product.setPrice(5500);
+            product.setDate(new Date());
+            Category category = new Category();
+            category.setId(3L);
+            product.setCategory(category);
+            repository.save(product);
+            System.out.println("Product successfully saved");
 
             System.out.println("==================== list / findAll ==================== ");
             repository.findAll().forEach(System.out::println);

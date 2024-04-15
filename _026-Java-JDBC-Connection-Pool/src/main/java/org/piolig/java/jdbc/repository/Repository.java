@@ -1,6 +1,6 @@
 package org.piolig.java.jdbc.repository;
 
-import org.piolig.java.jdbc.model.Category;
+import org.piolig.java.jdbc.model.Product;
 
 import java.sql.SQLException;
 import java.util.List;

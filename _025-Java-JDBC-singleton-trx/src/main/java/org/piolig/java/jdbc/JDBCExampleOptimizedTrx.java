@@ -2,6 +2,7 @@ package org.piolig.java.jdbc;
 
 import org.piolig.java.jdbc.model.Category;
 import org.piolig.java.jdbc.model.Product;
+import org.piolig.java.jdbc.repository.CategoryRepositoryImpl;
 import org.piolig.java.jdbc.repository.ProductRepository;
 import org.piolig.java.jdbc.repository.Repository;
 import org.piolig.java.jdbc.util.DBConnection;
@@ -16,15 +17,21 @@ public class JDBCExampleOptimizedTrx {
         // try with auto-close
         // this help us avoid handling closing all the used resources, they close automatically
         // also exceptions are handled automatically
-        try (Connection conn = DBConnection.getInstance()) {
+        try (Connection conn = DBConnection.getConnection()) {
             if (conn.getAutoCommit()) {
                 conn.setAutoCommit(false);
             }
 
+
             try {
+                Repository<Category> categoryRepository = new CategoryRepositoryImpl(conn);
+                System.out.println("==================== Insert new category ==================== ");
+                Category category = new Category();
+                category.setName("Whitelabel");
+                Category newCategory = categoryRepository.save(category);
+                System.out.println("Category successfully saved: " + newCategory.getId());
 
-                Repository<Product> repository = new ProductRepository();
-
+                Repository<Product> repository = new ProductRepository(conn);
                 System.out.println("==================== list / findAll ==================== ");
                 repository.findAll().forEach(System.out::println);
 
@@ -33,39 +40,25 @@ public class JDBCExampleOptimizedTrx {
 
                 System.out.println("\n==================== inserting new product ==================== ");
                 Product product = new Product();
-                product.setName("IBM mechanical Keyboard");
-                product.setPrice(1550);
+                product.setName("Samsung fridge");
+                product.setPrice(9900);
                 product.setDate(new Date());
-                Category category = new Category();
-                category.setId(3L);
-                product.setCategory(category);
-                product.setSku("10");
-                repository.save(product);
-                System.out.println("Product successfully saved");
+                product.setSku("12");
 
-                System.out.println("\n==================== update product ==================== ");
-                product = new Product();
-                product.setId(5L);
-                product.setName("IBM mechanical Keyboard");
-                product.setPrice(1000);
-                category = new Category();
-                category.setId(3L);
-                product.setCategory(category);
-                product.setSku("11");
+                product.setCategory(newCategory);
                 repository.save(product);
-                System.out.println("Product successfully updated");
+                System.out.println("Product successfully saved" + product.getId());
 
                 System.out.println("==================== list / findAll ==================== ");
                 repository.findAll().forEach(System.out::println);
                 conn.commit();
-
             } catch (SQLException e) {
                 conn.rollback();
                 e.printStackTrace();
             }
-
         }
-    }
 
+    }
 }
+
 

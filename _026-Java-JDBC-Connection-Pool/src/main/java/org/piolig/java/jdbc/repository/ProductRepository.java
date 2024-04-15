@@ -2,6 +2,7 @@ package org.piolig.java.jdbc.repository;
 
 import org.piolig.java.jdbc.model.Category;
 import org.piolig.java.jdbc.model.Product;
+import org.piolig.java.jdbc.util.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,7 +20,8 @@ public class ProductRepository implements Repository<Product> {
     public List<Product> findAll() throws SQLException {
         List<Product> products = new ArrayList<>();
 
-        try (Statement stmt = conn.createStatement();
+        try (
+                Statement stmt = conn.createStatement();
              ResultSet resultSet = stmt.executeQuery("SELECT p.*, c.name as category FROM products as p " +
                      "JOIN categories as c ON p.category_id = c.id")) {
 
@@ -57,12 +59,12 @@ public class ProductRepository implements Repository<Product> {
     public Product save(Product product) throws SQLException {
         String sql;
         if (product.getId() != null && product.getId() > 0) {
-            sql = "UPDATE products set name= ?, price= ?, category_id= ?, sku= ? WHERE id= ?";
+            sql = "UPDATE products set name= ?, price= ?, category_id= ?, sku= WHERE id= ?";
         } else {
             sql = "INSERT INTO products(name, price, category_id, sku, registry_date) VALUES(?, ?, ?, ?, ?)";
         }
         try(
-                PreparedStatement stmt = conn.prepareStatement(sql);
+                PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 ) {
 
             stmt.setString(1, product.getName());
@@ -77,9 +79,17 @@ public class ProductRepository implements Repository<Product> {
 
             stmt.executeUpdate();
 
-        }
+            if (product.getId() != null) {
+                try (ResultSet rs = stmt.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        product.setId(rs.getLong(1));
+                    }
+                }
+            }
 
-        return null;
+        }
+        return product;
+
     }
 
     @Override
@@ -96,7 +106,6 @@ public class ProductRepository implements Repository<Product> {
         p.setName(resultSet.getString("name"));
         p.setPrice(resultSet.getInt("price"));
         p.setDate(resultSet.getDate("registry_date"));
-        p.setSku(resultSet.getString("sku"));
         Category category = new Category();
         category.setId(resultSet.getLong("category_id"));
         category.setName(resultSet.getString("category"));
