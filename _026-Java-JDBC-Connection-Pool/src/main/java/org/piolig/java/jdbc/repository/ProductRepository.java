@@ -2,7 +2,6 @@ package org.piolig.java.jdbc.repository;
 
 import org.piolig.java.jdbc.model.Category;
 import org.piolig.java.jdbc.model.Product;
-import org.piolig.java.jdbc.util.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -106,6 +105,7 @@ public class ProductRepository implements Repository<Product> {
         p.setName(resultSet.getString("name"));
         p.setPrice(resultSet.getInt("price"));
         p.setDate(resultSet.getDate("registry_date"));
+        p.setSku(resultSet.getString("sku"));
         Category category = new Category();
         category.setId(resultSet.getLong("category_id"));
         category.setName(resultSet.getString("category"));
