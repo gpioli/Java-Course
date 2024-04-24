@@ -14,9 +14,9 @@ public class JDBCExampleOptimizedDelete {
         // try with auto-close
         // this help us avoid handling closing all the used resources, they close automatically
         // also exceptions are handled automatically
-        try (Connection conn = DBConnection.getConnection() ) {
+        try (Connection conn = DBConnection.getInstance() ) {
 
-            Repository<Product> repository = new ProductRepository(conn);
+            Repository<Product> repository = new ProductRepository();
 
             System.out.println("==================== list / findAll ==================== ");
             repository.findAll().forEach(System.out::println);

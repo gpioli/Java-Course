@@ -10,7 +10,14 @@ public class CategoryRepositoryImpl implements Repository<Category> {
 
     private Connection conn;
 
+    public CategoryRepositoryImpl() {
+    }
+
     public CategoryRepositoryImpl(Connection conn) {
+        this.conn = conn;
+    }
+
+    public void setConn(Connection conn) {
         this.conn = conn;
     }
 

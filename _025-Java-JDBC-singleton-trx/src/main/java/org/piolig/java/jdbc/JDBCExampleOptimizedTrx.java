@@ -2,7 +2,6 @@ package org.piolig.java.jdbc;
 
 import org.piolig.java.jdbc.model.Category;
 import org.piolig.java.jdbc.model.Product;
-import org.piolig.java.jdbc.repository.CategoryRepositoryImpl;
 import org.piolig.java.jdbc.repository.ProductRepository;
 import org.piolig.java.jdbc.repository.Repository;
 import org.piolig.java.jdbc.util.DBConnection;
@@ -13,52 +12,48 @@ import java.util.Date;
 
 public class JDBCExampleOptimizedTrx {
     public static void main(String[] args) throws SQLException {
-
-        // try with auto-close
-        // this help us avoid handling closing all the used resources, they close automatically
-        // also exceptions are handled automatically
-        try (Connection conn = DBConnection.getConnection()) {
-            if (conn.getAutoCommit()) {
+        try (Connection conn = DBConnection.getInstance()) {
+            if(conn.getAutoCommit()) {
                 conn.setAutoCommit(false);
             }
-
-
             try {
-                Repository<Category> categoryRepository = new CategoryRepositoryImpl(conn);
-                System.out.println("==================== Insert new category ==================== ");
-                Category category = new Category();
-                category.setName("Whitelabel");
-                Category newCategory = categoryRepository.save(category);
-                System.out.println("Category successfully saved: " + newCategory.getId());
-
-                Repository<Product> repository = new ProductRepository(conn);
-                System.out.println("==================== list / findAll ==================== ");
+                Repository<Product> repository = new ProductRepository();
+                System.out.println("============= list / find all =============");
                 repository.findAll().forEach(System.out::println);
 
-                System.out.println("\n==================== Searching for id = 2 ==================== ");
-                System.out.println(repository.byId(2L));
+                System.out.println("============= get by id =============");
+                System.out.println(repository.byId(1L));
 
-                System.out.println("\n==================== inserting new product ==================== ");
+                System.out.println("============= insert new product =============");
                 Product product = new Product();
-                product.setName("Samsung fridge");
-                product.setPrice(9900);
+                product.setName("IBM mechanical keyboard - Advanced");
+                product.setPrice(1865);
                 product.setDate(new Date());
-                product.setSku("12");
-
-                product.setCategory(newCategory);
+                Category category = new Category();
+                category.setId(3L);
+                product.setCategory(category);
+                product.setSku("abcde12348");
                 repository.save(product);
-                System.out.println("Product successfully saved" + product.getId());
+                System.out.println("Product successfully saved");
 
-                System.out.println("==================== list / findAll ==================== ");
+                System.out.println("============= Update product =============");
+                product = new Product();
+                product.setId(5L);
+                product.setName("Cosair Keyboard k95");
+                product.setPrice(1000);
+                product.setSku("abcdef1234");
+                category = new Category();
+                category.setId(2L);
+                product.setCategory(category);
+                repository.save(product);
+                System.out.println("Product updated successfully");
+
                 repository.findAll().forEach(System.out::println);
                 conn.commit();
-            } catch (SQLException e) {
+            } catch (SQLException exception) {
                 conn.rollback();
-                e.printStackTrace();
+                exception.printStackTrace();
             }
         }
-
     }
 }
-
-

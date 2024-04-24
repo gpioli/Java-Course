@@ -2,6 +2,7 @@ package org.piolig.java.jdbc.repository;
 
 import org.piolig.java.jdbc.model.Category;
 import org.piolig.java.jdbc.model.Product;
+import org.piolig.java.jdbc.util.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,17 +10,15 @@ import java.util.List;
 
 public class ProductRepository implements Repository<Product> {
 
-    private Connection conn;
-
-    public ProductRepository(Connection conn) {
-        this.conn = conn;
+    private Connection getConnection() throws SQLException {
+        return DBConnection.getInstance();
     }
 
     @Override
     public List<Product> findAll() throws SQLException {
         List<Product> products = new ArrayList<>();
 
-        try (Statement stmt = conn.createStatement();
+        try (Statement stmt = getConnection().createStatement();
              ResultSet resultSet = stmt.executeQuery("SELECT p.*, c.name as category FROM products as p " +
                      "JOIN categories as c ON p.category_id = c.id")) {
 
@@ -36,7 +35,7 @@ public class ProductRepository implements Repository<Product> {
     @Override
     public Product byId(Long id) throws SQLException {
         Product product = null;
-        try(PreparedStatement preparedStatement = conn.
+        try(PreparedStatement preparedStatement = getConnection().
                 prepareStatement(
                 "SELECT p.*, c.name as category FROM products as p " +
                         "JOIN categories as c ON p.category_id = c.id WHERE p.id = ?")) {
@@ -62,7 +61,7 @@ public class ProductRepository implements Repository<Product> {
             sql = "INSERT INTO products(name, price, category_id, sku, registry_date) VALUES(?, ?, ?, ?, ?)";
         }
         try(
-                PreparedStatement stmt = conn.prepareStatement(sql);
+                PreparedStatement stmt = getConnection().prepareStatement(sql);
                 ) {
 
             stmt.setString(1, product.getName());
@@ -84,7 +83,7 @@ public class ProductRepository implements Repository<Product> {
 
     @Override
     public void delete(Long id) throws SQLException {
-        try (PreparedStatement statement = conn.prepareStatement("DELETE FROM products WHERE id=?")) {
+        try (PreparedStatement statement = getConnection().prepareStatement("DELETE FROM products WHERE id=?")) {
             statement.setLong(1, id);
             statement.executeUpdate();
         }
