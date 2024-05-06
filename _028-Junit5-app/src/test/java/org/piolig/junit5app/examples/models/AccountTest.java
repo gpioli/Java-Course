@@ -10,10 +10,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.piolig.junit5app.examples.exceptions.InsufficientBalanceException;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
@@ -22,10 +24,18 @@ import static org.junit.jupiter.api.Assumptions.assumingThat;
 class AccountTest {
 
     Account account;
+
+    private TestInfo testInfo;
+    private TestReporter testReporter;
+
     @BeforeEach
-    void initMethodTest() {
+    void initMethodTest(TestInfo testInfo, TestReporter testReporter) {
         account = new Account("Gaston", new BigDecimal("1000.12345"));
         System.out.println("Initializing method.");
+        this.testInfo = testInfo;
+        this.testReporter = testReporter;
+        testReporter.publishEntry("Executing: " + testInfo.getDisplayName() + " " + testInfo.getTestMethod().orElse(null).getName()
+                + " with tags: " + testInfo.getTags());
     }
 
     @AfterEach
@@ -53,6 +63,10 @@ class AccountTest {
         @Test
         @DisplayName("Testing name field")
         void testAccountName() {
+            testReporter.publishEntry(testInfo.getTags().toString());
+            if (testInfo.getTags().contains("account")) {
+                System.out.println("Do something with account tag");
+            }
 
             account.setPerson("Gaston");
 
@@ -391,6 +405,28 @@ class AccountTest {
         return Arrays.asList("100", "200", "300", "500", "700", "1000");
     }
 
+    @Nested
+    @Tag("Timeout")
+    class exampleTimeOutTest {
+        @Test
+        @Timeout(1)
+        void testTimeOut() throws InterruptedException {
+            TimeUnit.MILLISECONDS.sleep(100);
+        }
+
+        @Test
+        @Timeout(value = 1000, unit = TimeUnit.MILLISECONDS)
+        void testTimeOut2() throws InterruptedException {
+            TimeUnit.MILLISECONDS.sleep(900);
+        }
+
+        @Test
+        void testTimeOut3() {
+            assertTimeout(Duration.ofSeconds(5), () -> {
+                TimeUnit.MILLISECONDS.sleep(4000);
+            });
+        }
+    }
 
 
 }
