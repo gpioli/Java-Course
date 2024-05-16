@@ -13,4 +13,9 @@ public class ExamRepositoryImpl implements ExamRepository {
         return Arrays.asList(new Exam(5L, "Maths"), new Exam(6L, "Language"),
                 new Exam(7L, "History"));
     }
+
+    @Override
+    public Exam save(Exam exam) {
+        return null;
+    }
 }

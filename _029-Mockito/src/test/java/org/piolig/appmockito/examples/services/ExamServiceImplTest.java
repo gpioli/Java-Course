@@ -1,29 +1,50 @@
 package org.piolig.appmockito.examples.services;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.stubbing.Answer;
 import org.piolig.appmockito.examples.models.Exam;
 import org.piolig.appmockito.examples.repositories.ExamRepository;
-import org.piolig.appmockito.examples.repositories.ExamRepositoryImpl;
+import org.piolig.appmockito.examples.repositories.QuestionsRepository;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class ExamServiceImplTest {
+
+    @Mock
+    ExamRepository repository;
+    @Mock
+    QuestionsRepository questionsRepository;
+
+    @InjectMocks
+    ExamServiceImpl service;
+
+    @BeforeEach
+    void setUp() {
+//        repository = mock(ExamRepository.class);
+//        questionsRepository = mock(QuestionsRepository.class);
+//        service = new ExamServiceImpl(repository, questionsRepository);
+
+    }
 
     @Test
     void findExamByName() {
-        ExamRepository repository = mock(ExamRepository.class);
-        ExamService service = new ExamServiceImpl(repository);
-        List<Exam> data = Arrays.asList(new Exam(5L, "Maths"), new Exam(6L, "Language"),
-                new Exam(7L, "History"));
+
+        when(repository.findAll()).thenReturn(Data.EXAMS);
         Optional<Exam> exam = service.findExamByName("Maths");
-        when(repository.findAll()).thenReturn(data);
+
         assertTrue(exam.isPresent());
         assertEquals(5L, exam.orElseThrow().getId());
         assertEquals("Maths", exam.get().getName());
@@ -31,13 +52,72 @@ class ExamServiceImplTest {
 
     @Test
     void findExamByNameEmptyList() {
-        ExamRepository repository = mock(ExamRepository.class);
-        ExamService service = new ExamServiceImpl(repository);
         List<Exam> data = Collections.emptyList();
+
         Optional<Exam> exam = service.findExamByName("Maths");
+
         when(repository.findAll()).thenReturn(data);
-        assertTrue(exam.isPresent());
-        assertEquals(5L, exam.orElseThrow().getId());
-        assertEquals("Maths", exam.get().getName());
+        assertFalse(exam.isPresent());
+
+    }
+
+    @Test
+    void testExamQuestions() {
+        when(repository.findAll()).thenReturn(Data.EXAMS);
+        when(questionsRepository.findQuestionsByExamId(anyLong())).thenReturn(Data.QUESTIONS);
+        Exam exam = service.findExamByNameWithQuestions("Maths");
+        assertEquals(5, exam.getQuestions().size());
+        assertTrue(exam.getQuestions().contains("integrals"));
+
+    }
+
+    @Test
+    void testExamQuestionsVerify() {
+        when(repository.findAll()).thenReturn(Data.EXAMS);
+        when(questionsRepository.findQuestionsByExamId(anyLong())).thenReturn(Data.QUESTIONS);
+        Exam exam = service.findExamByNameWithQuestions("Maths");
+        assertEquals(5, exam.getQuestions().size());
+        assertTrue(exam.getQuestions().contains("integrals"));
+        verify(repository).findAll();
+        verify(questionsRepository).findQuestionsByExamId(5L);
+    }
+
+    @Test
+    void testDoesntExistsExam() {
+        when(repository.findAll()).thenReturn(Collections.emptyList());
+        when(questionsRepository.findQuestionsByExamId(anyLong())).thenReturn(Data.QUESTIONS);
+        Exam exam = service.findExamByNameWithQuestions("Maths");
+        assertNull(exam);
+        verify(repository).findAll();
+        verify(questionsRepository).findQuestionsByExamId(5L);
+    }
+
+    @Test
+    void testSaveExam() {
+        // GIVEN
+        Exam newExam = Data.EXAM;
+        newExam.setQuestions(Data.QUESTIONS);
+
+        when(repository.save(any(Exam.class))).then(new Answer<Exam>() {
+
+            Long sequence = 8L;
+            @Override
+            public Exam answer(InvocationOnMock invocationOnMock) throws Throwable {
+                Exam exam = invocationOnMock.getArgument(0);
+                exam.setId(sequence++);
+                return exam;
+            }
+        });
+
+        // WHEN
+        Exam exam = service.save(newExam);
+
+        // THEN
+        assertNotNull(exam.getId());
+        assertEquals(8L, exam.getId());
+        assertEquals("Physics", exam.getName());
+
+        verify(repository).save(any(Exam.class));
+        verify(questionsRepository).saveVarious(anyList());
     }
 }
