@@ -13,6 +13,7 @@
         <maven.compiler.source>11</maven.compiler.source><!--Comprobar que el sdk apunte a la version de java que tenemos(en Project Structure)-->
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.outputEncoding>UTF-8</project.build.outputEncoding >
     </properties>
 
     <dependencies>
