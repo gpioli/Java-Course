@@ -1,4 +1,4 @@
-package org.piolig.apiservlet.webapp.headers;
+package org.piolig.apiservlet.webapp.headers.contollers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,16 +18,16 @@ public class HeadersHttpRequestServlet extends HttpServlet {
 
         String httpMethod = req.getMethod(); // method used in the request (although we know we are in a GET)
         String requestUri = req.getRequestURI();
-        String requestUrl = req.getRequestURL().toString();
+        String requestUrl = req.getRequestURL().toString(); // displays the URL from where we got to this
         String contextPath = req.getContextPath(); // project name
-        String servletPath = req.getServletPath();
+        String servletPath = req.getServletPath(); // shows current servlet path
         String clientIp = req.getRemoteAddr();
-        String ip = req.getLocalAddr();
+        String ip = req.getLocalAddr(); // server IP
         int port = req.getLocalPort();
-        String scheme = req.getScheme();
-        String host = req.getHeader("host");
-        String url = scheme + "://" + host + contextPath + servletPath;
-        String url2 = scheme + "://" + ip + ":" + port + contextPath + servletPath;
+        String scheme = req.getScheme(); // http or https?
+        String host = req.getHeader("host"); // server name / host name
+        String url = scheme + "://" + host + contextPath + servletPath; // we manually create the url
+        String url2 = scheme + "://" + ip + ":" + port + contextPath + servletPath; // similar to previous one
 
         resp.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = resp.getWriter()) {
