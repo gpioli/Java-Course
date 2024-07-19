@@ -18,7 +18,7 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ProducService service = new ProductServiceImpl();
+        ProductService service = new ProductServiceImpl();
         List<Product> products = service.list();
 
         LoginService auth = new LoginServiceSessionImpl();
@@ -48,6 +48,7 @@ public class ProductServlet extends HttpServlet {
             out.println("        <th>type</th>");
             if (usernameOptional.isPresent()) {
                 out.println("        <th>price</th>");
+                out.println("        <th>add</th>");
             }
             out.println("        </tr>");
             products.forEach(p -> {
@@ -57,6 +58,8 @@ public class ProductServlet extends HttpServlet {
                 out.println("<td>" + p.getType() + "</td>");
                 if (usernameOptional.isPresent()) {
                     out.println("<td>" + p.getPrice() + "</td>");
+                    out.println("<td><a href=\"" + req.getContextPath()
+                            + "/add-cart?id=" + p.getId() + "\">add-to-cart</a></td>");
                 }
 
                 out.println("</tr>");
