@@ -59,7 +59,8 @@ public class ProductServlet extends HttpServlet {
                 if (usernameOptional.isPresent()) {
                     out.println("<td>" + p.getPrice() + "</td>");
                     out.println("<td><a href=\"" + req.getContextPath()
-                            + "/add-cart?id=" + p.getId() + "\">add-to-cart</a></td>");
+                            + "/add-cart?id=" + p.getId()
+                            + "\">add-to-cart</a></td>");
                 }
 
                 out.println("</tr>");
