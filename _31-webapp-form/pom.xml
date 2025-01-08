@@ -28,7 +28,7 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-            <!--            compilar el código fuente del proyecto Java y generar archivos de clase a partir de él-->
+            <!--            compilar el código fuente del proyecto Java y generar archivos de clase a partir de él.-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
