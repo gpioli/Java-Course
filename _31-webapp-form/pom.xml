@@ -34,7 +34,7 @@
                 <version>3.8.1</version>
             </plugin>
 
-            <!--            permite la integración y el despliegue de aplicaciones web en un servidor Apache Tomcat-->
+            <!--            permite la integración y el despliegue de aplicaciones web en un servidor Apache Tomcat.-->
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
